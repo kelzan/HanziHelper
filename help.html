@@ -1,0 +1,243 @@
+<html>
+<h2>Hanzi Helper version 1.0</h2>
+
+<a href="http://hanzihelper.sourceforge.net">http://hanzihelper.sourceforge.net</a><br>
+<i>coljac@users.sourceforge.net</i>
+ <p>
+HanziHelper uses some functionality from the Dragon Character Training application
+for PalmOS. Please check out this project at http://dragon-char.sf.net. Thanks a
+lot to the developers of this project.
+<p>
+<h3>Intro</h3>
+Hanzi Helper maintains a list of characters and lets you make practice sheets based
+on these characters or a subset of them. It's a way of remember what you should know
+and testing yourself, as well as practicing new characters you just learned. It lets
+you export the characters in a variety of formats, and includes a utility to convert
+chinese text files from one format to the other.
+<p>
+If you use this application, please consider letting the developer know what you
+thought of it. This way, you can be sure it'll be actively maintained.
+<p>
+<h3>Running</h3>
+<p>
+Hanzi Helper requires Java to run. Java is available for most operating systems including
+Windows, MacOS and Linux. You can get Java for free at <a href="http://java.com">http://java.com</a>. A good way to
+test whether you already have java installed is to try and run the command "java -version".
+You need to have Java 1.4 or greater to run this application. (The Reminder app requires Java 5.)
+<p>
+If you downloaded hanziHelper.jar, and you have Java installed, you ought to be able
+to double-click on that file to run it. The first time it runs, it'll create a file called
+hanzihelper.properties that stores your settings. If this doesn't work, you'll need
+to tell your computer to run the command "javaw -jar hanziHelper.jar" from the command line or via a "shortcut".
+ <p>
+<h3>Using the Application</h3>
+
+This program does not include any Chinese text functionality of its own. To view Chinese
+characters, you will need to have a Chinese font installed, and to enter them into
+the application, you'll need a Chinese input method installed on your operating
+system (or cut-and-paste from somewhere else). The default font is "Arial Unicode MS"
+which is the universal font that is installed with Microsoft Office. You'll probably
+want to alter this. The screenshots were made using a font called "KaiTi_GB2312" in
+a file called "simkai.ttf" - this excellent font ships with Chinese WinXP but you can
+probably Google for it, or use the font of your choice. There is a font setup window
+available from the main "File" menu. Note that the font sizes set here are only used
+in the print section of the application (for now the fonts in the main display are of a
+fixed size).
+<p>
+From the main window, you can view the current list of characters. To add new characters,
+use <b>File-&gt;Add</b> from the menu or hit <b>alt-A</b>.
+You must enter Pinyin and Chinese, but the
+English is optional, as is the book information. Hitting enter from the English field
+or pressing the OK button will add your character to the list. By hitting enter,
+the form is reset so you can rapidly enter several characters in sequence. Pinyin entered
+with text tone numbers (e.g. zhong1wen2) are translated into unicode tone marks for
+display and printing. Similarly, Vs become ü/u: when rendered.
+<p>
+Entering multi-character words is ok. They will be split up on separate rows in the
+character view, but randomizing the list for printing will not separate the characters
+in a word.
+<p>
+When run for the first time, you'll want to create a "record" file. This is your list
+of characters. You can have multiple record files if you wish. To create a record file,
+use the "new" option from the file menu (<b>file-&gt;new</b>).
+The only files needed by the application are you character list, which is a UTF-8
+encoded text file, and hanzihelper.properties, which records your settings
+such as paper size and fonts. You can edit these files externally if you want to.
+<p>
+The list can be filtered by book and chapter. Select "<b>show filter</b>" from the filter
+menu. The books available are presented as a drop-down list. Chapter information can
+be entered as a number, such as "3", or a range, such as "3-6". Once applied, the filter
+will function in the list view and for printing as well. Also, the characters can be
+highlighted from the main view. If any characters are highlighted, only highlighted
+characters will be sent to the printing part of the application. This allows you to
+pick a few characters or a range of characters to pring from your list. The same holds
+true when exporting the list.
+<p>
+<h4>Viewing a character's stroke order</h4>
+Try right-clicking on a character. If the character is known to the application, a window will
+pop up showing the strokes in their correct order. Left clicking in this window will stop the character
+from drawing itself, and advance by one stroke. Right clicking will clear the window to start over again.
+
+<h4>Printing</h4>
+When you are ready to print practice sheets, select <b>File-&gt;Print</b> or hit
+ctrl-P in the main window. From here, select the style and text to print and you will be
+shown a preview. You can change the page settings, fonts and box sizes here. If you
+hit the "resize" button on the font dialog, it will iteratively figure out the biggest
+font size that will fit in the boxes.
+<p>
+The options have the following meanings:
+<p>
+<b>Style 'one per row'</b>: A character will be printed in the left-most box only.<br>
+<b>Style 'cram'</b>: A character will be printed in every second box, leaving room
+  to copy it on the right.<br>
+<b>Style 'rows'</b>: A character will be printed in every box, but only on every second
+row.<br>
+<b>Style 'read'</b>: No gaps are left for copying.<p>
+
+The text options allow you choose whether the character itself or its pinyin or
+english translation is printed. Good for testing yourself.
+<p>
+The other options change the character of the boxes themselves or the fonts used
+for rendering text. Their use should be pretty straightforward.
+
+<h4>Exporting</h4>
+The application lets you export into a variety of formats. In most cases, you can export the whole
+character record or the highlighted subset. Some of these might cause unpredictable
+results, as many have not been used by any users apart from the developer. The supported formats are:
+<p>
+<b>Supermemo:</b> This is in a text format suitable for conversion to a Supermemo for Palm OS database.
+<br>
+<b>Q &amp; A:</b> This is a text format with questions and answers on separate lines (e.g. Q: 我, A: I).
+This format is good for importing into a variety of flash-card programs, such as Supermemo for Windows.
+<br>
+<b>Excel XML:</b> This creates an XML file that can be opened by Microsoft Excel. It contains a bunch
+of information about the character. I personally make a big binder of these, and use them to "get to know" a
+character when it's new to me.
+<br>
+<b>Stroke images:</b> Creates .png image files that show how to write the characters. Select a diretory.
+<br>
+<!--<b>Description images:</b> Creates .png image files that show some data on the character-->
+<!--stolen from zhongwen.com.-->
+<!--<br>-->
+<b>Dragon char:</b> Creates a .pdb binary file for use by Dragon Character Training on the Palm.
+<br>
+<b>Plecodict flashcards:</b> For importing into the PlecoDict software for PalmOS.
+<br>
+<b>Simple text list:</b> Your characters as one big long string. Useful for searching.
+<br>
+<b>VTrain</b>: Creates a text file using the default = | delimiters that can be imported into VTrain on Windows.
+<p>
+
+<h4>Converting files</h4>
+As a bonus, the application includes the functionality to convert Chinese text files to and from a variety of
+formats. <b>File-&gt;Convert</b> opens up a window that prompts you for an input and output file to convert.
+You need to know what format the input file is in for it to work properly (there's really no such thing as a
+"plain text" file these days, only text files with an associated encoding). If unsure, experiment and see. The
+supported formats are:
+<ul>
+  <li><b>UTF-8</b>: A common Unicode format used around the web, that is compatible with ordinary plain text files.</li>
+  <li><b>UTF-16</b>: A Unicode text format.</li>
+  <li><b>GB2312</b>: The standard non-unicode way of representing simplified Chinese text.</li>
+  <li><b>Big5</b>: The standard non-unicode way of representing traditional Chinese text.</li>
+</ul>
+The converter will also let you convert simplified to traditional and back again. Make sure that when performing
+such a conversion the destination file is an appropriate format (simplified text won't be readable in a Big5 file,
+and tradition in GB2312). The "Write BOM" check box is used when UTF-8 text is written. If selected, the
+converter adds a so-called "byte order mark" to the start of the text file. Some applications require this mark to
+be able to interpret UTF-8 text properly.
+
+<h3>"Reminders"</h3>
+
+As of version 0.8, the application also comes with a separate little app for "reminding"
+you of the characters in your list as you work. It does this by putting a small window
+in the corner of your screen, and cycling through the characters in the list at the speed
+of your choice. (See the web site for a screenshot.) I decided it's too annoying to use, but
+please be my guest. :)
+<p>
+Reminder is packaged as a separate executable jar file. It needs to be in the same
+directory as hanziHelper.jar when run. Because of some features like always-on-top
+windows, Reminder needs Java 5 to run.
+<p>
+The little window will initialize in the corner of your screen, but can be dragged around.
+When Reminder has the focus, the following keyboard commands are enabled:
+<p>
+<b>Esc:</b> Quit<br>
+<b>F1:</b> Change the time interval between characters<br>
+<b>F2:</b> Toggle "always on top"<br>
+<b>R:</b> Toggle random order         <br>
+<b>Space:</b> Start/stop the rotation<br>
+<b>Right/left:</b> Next/previous char<br>
+<b>Home:</b> First char<br>
+
+<p>
+Reminder uses the last record file open in the main application. Optionally, you can
+specify a filename as a command line parameter (e.g. "java -jar reminder.jar myRecord.rec").
+<p>
+Thanks for using Hanzi Helper!
+    <p>
+<h3>Still to Come</h3>
+Resize the reminder app window <br>
+Import CSV<br>
+Searching<br>
+Adding extra data to the records, including example sentences<br>
+Changing the font sizes on the main view<br>
+Changing the column headers<br>
+Flashcards<br>
+
+<h3>Version History</h3>
+<p>
+<b>Version 1.0 January 2 2007</b>
+<p>
+Miscellaneous improvements and bug fixes.<br>
+Added text-file conversion mini-app<br>
+When a new record is added, it should display that record propertly now<br>
+Fixed bug with paper size not set to A4 in page setup<br>
+Fixed bug where deleting a record from the sorted display deletes the record at the old, unsorted position<br>
+Extra exporting options including Excel, Vtrain, PlecoDict flash cards <br>
+Made reminder panel draggable<br>
+<p>
+<b>Version 0.9  Apr 18 2005</b>
+<p>
+Java 1.4 support added back in (2 builds).<br>
+Enhanced reminder app (auto-starts rotation, characters can be taken out of rotation)<br>
+Stroke order animations added.<br>
+Records now editable.<br>
+Data files choosable and createable.<br>
+Main display table sortable.<br>
+<p>
+<b>Version 0.8  Feb 10 2005</b>
+<p>
+First version of the reminder functionality works.<br>
+Fixed filtering bug when list is randomized.<br>
+Added multi-character word handling logic.<br>
+They mostly come out at night. Mostly.<br>
+<p>
+<b>Version 0.7  Oct 8 2004</b>
+<p>
+Added books and chapter data to the character record.<br>
+Added ability to print without leaving gaps to practice.<br>
+Temporary fix: Added secret configuration parameter to make the guide lines lighter: set guides.color=lightgray<br>
+Record numbers are determined by order in the file instead of explicitly<br>
+<p>
+<b>Version 0.6 (2004)</b>
+<p>
+Can disable header info, grid lines.<br>
+Print dialog is resizable and fits itself to screen automatically.<br>
+Print controls altered for space.<br>
+Sample data packaged with application.<br>
+Numbers removed from record file.<br>
+Can clear the record database.<br>
+<p>
+<b>Version 0.5 (2004)</b>
+<p>
+Initial release.
+<p>
+<h3>Building from the sources</h3>
+If you want to compile and try the latest version from the sources or the CVS, here
+is what to do.
+ <p>
+HanziHelper is a Java application. To build from the sources, you need Java and
+Ant (http://ant.apache.org) installed. Then just run "ant" in the HH directory.
+The result will be build/hanziHelper.jar, which is an executable jar file. Run
+with "java -jar hanziHelper.jar" or double-click on its icon.
+</html>
