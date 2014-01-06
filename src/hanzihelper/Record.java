@@ -30,13 +30,14 @@ public class Record implements Comparable {
     private int order;
     private String pinyin;
     private String chars;
+    private String trad;
     private String english;
     private String unicode = null;
     private String book = "";
     private String chapter = "";
     private String extra1;
 
-    public Record(int order, String pinyin, String chars, String english, String book, String chapter) {
+    public Record(int order, String pinyin, String chars, String trad, String english, String book, String chapter) {
         this.order = order;
         this.pinyin = pinyin;
         this.chars = chars;
@@ -45,9 +46,9 @@ public class Record implements Comparable {
         this.chapter = chapter;
     }
 
-    public Record(int order, String pinyin, String chars, String english, String book, String chapter,
+    public Record(int order, String pinyin, String chars, String trad, String english, String book, String chapter,
             String extra1) {
-        this(order, pinyin, chars, english, book, chapter);
+        this(order, pinyin, chars, trad, english, book, chapter);
         this.extra1 = extra1;
     }
 
@@ -81,6 +82,14 @@ public class Record implements Comparable {
 
     public void setChars(String chars) {
         this.chars = chars;
+    }
+
+    public String getTrad() {
+        return trad;
+    }
+
+    public void setTrad(String trad) {
+        this.trad = trad;
     }
 
     public String getEnglish() {

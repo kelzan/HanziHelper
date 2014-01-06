@@ -23,8 +23,8 @@ import java.util.*;
 
 /**
  * The "database" of characters. This class is just a wrapper around a UTF-8 text file. The text
- * file is tab-delimited with the following columns: pinyin / UTF-8 chinese / english / book /
- * chapter / extended info
+ * file is tab-delimited with the following columns: pinyin / UTF-8 chinese / UTF-8 traditional /
+ * english / book / chapter / extended info
  */
 public class CharRecord {
 
@@ -52,36 +52,33 @@ public class CharRecord {
         int order = 1;
         while ((line = br.readLine()) != null) {
             if (line.startsWith("#")) {
+                // Allow a comment field, just skip it
                 continue;
             }
 
-            StringTokenizer st = new StringTokenizer(line, "\t");
-            String pin = null;
-            try {
-                pin = st.nextToken();
+            // Strip out byte-ordering markers
+            while (line.startsWith("" + (char) 0xFEFF) || line.startsWith("" + (char) 0xFFEF)) {
+                line = line.substring(1);
+            }
 
-                while (pin.startsWith("" + (char) 0xFEFF) || pin.startsWith("" + (char) 0xFFEF)) {
-                    pin = pin.substring(1);
+            int curItem = 0;
+            //           StringTokenizer st = new StringTokenizer(line, "\t");
+
+            try {
+                String[] items = line.split("\t");
+                if (items.length < 4) {
+                    throw new Exception();
                 }
-                String chars = st.nextToken();
-                String eng = st.nextToken();
-                String book = "";
-                String chapter = "";
-                String groupOrder = null;
-                String extra1 = "";
-                if (st.hasMoreTokens()) {
-                    book = st.nextToken();
-                }
-                if (st.hasMoreTokens()) {
-                    chapter = st.nextToken();
-                }
-                if (st.hasMoreTokens()) {
-                    groupOrder = st.nextToken();
-                }
-                if (st.hasMoreTokens()) {
-                    extra1 = st.nextToken();
-                }
-                Record newRec = new Record(order++, pin, chars, eng, book, chapter, extra1);
+                String pin = items[0];
+                String chars = items[1];
+                String trad = (items[2] == items[1]) ? "" : items[2];
+                String eng = items[3];
+                String book = (items.length > 4) ? items[4] : "";
+                String chapter = (items.length > 5) ? items[5] : "";
+                String groupOrder = (items.length > 6) ? items[6] : null;
+                String extra1 = (items.length > 7) ? items[7] : "";
+
+                Record newRec = new Record(order++, pin, chars, trad, eng, book, chapter, extra1);
                 records.add(newRec);
                 if (groupOrder != null) {
                     int index = Integer.parseInt(groupOrder);

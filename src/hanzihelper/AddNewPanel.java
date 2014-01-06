@@ -129,7 +129,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
                 return;
             }
 
-            Record rec = new Record(-1, pinyin.getText(), chars.getText(), english.getText(), book.getText(), chapter.getText());
+            Record rec = new Record(-1, pinyin.getText(), chars.getText(), "", english.getText(), book.getText(), chapter.getText());
             try {
                 CharApp.getInstance().getRecord().addRecord(rec);
             } catch (Exception ex) {
