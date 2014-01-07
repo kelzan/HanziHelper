@@ -41,6 +41,7 @@ public class Record implements Comparable {
         this.order = order;
         this.pinyin = pinyin;
         this.chars = chars;
+        this.trad = trad;
         this.english = english;
         this.book = book;
         this.chapter = chapter;

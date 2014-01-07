@@ -39,6 +39,7 @@ public class EditPanel extends AddNewPanel {
         english.setText(rec.getEnglish());
         pinyin.setText(rec.getPinyin());
         chars.setText(rec.getChars());
+        trad.setText(rec.getTrad());
         book.setText(rec.getBook());
         chapter.setText(rec.getChapter());
     }
@@ -62,6 +63,7 @@ public class EditPanel extends AddNewPanel {
 
             rec.setPinyin(pinyin.getText());
             rec.setChars(chars.getText());
+            rec.setTrad(trad.getText());
             rec.setEnglish(english.getText());
             rec.setBook(book.getText());
             rec.setChapter(chapter.getText());

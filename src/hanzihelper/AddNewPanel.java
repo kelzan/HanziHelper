@@ -27,29 +27,32 @@ import java.awt.event.*;
  */
 public class AddNewPanel extends JDialog implements ActionListener {
 
-    protected JTextField pinyin, chars, english;
-    protected JTextField book, chapter;
+    protected JTextField pinyin, chars, trad;
+    protected JTextField english, book, chapter;
     protected JButton add, cancel;
     protected JLabel engLabel, pinLabel, charLabel;
-    protected JLabel bookLabel, chapLabel;
+    protected JLabel tradLabel, bookLabel, chapLabel;
 
     public AddNewPanel() {
         Container thiss = getContentPane();
         thiss.setBackground(CharApp.COLOR_BG);
 
         this.setTitle("Add new record");
-        thiss.setLayout(new GridLayout(6, 1));
+        thiss.setLayout(new GridLayout(7, 1));
         pinyin = new JTextField(12);
         pinyin.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
         chars = new JTextField(12);
+        trad = new JTextField(12);
         english = new JTextField(12);
         english.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
         chars.setFont(new Font("Arial Unicode MS", Font.PLAIN, english.getFont().getSize()));
+        trad.setFont(new Font("Arial Unicode MS", Font.PLAIN, english.getFont().getSize()));
         book = new JTextField(15);
         chapter = new JTextField(12);
 
         engLabel = new JLabel("English:");
         charLabel = new JLabel("Chinese:");
+        tradLabel = new JLabel("Traditional:");
         pinLabel = new JLabel("Pinyin:");
         bookLabel = new JLabel("Book:");
         chapLabel = new JLabel("Chapter:");
@@ -64,6 +67,11 @@ public class AddNewPanel extends JDialog implements ActionListener {
         temp = new JPanel(new FlowLayout());
         temp.add(charLabel);
         temp.add(chars);
+        thiss.add(temp);
+
+        temp = new JPanel(new FlowLayout());
+        temp.add(tradLabel);
+        temp.add(trad);
         thiss.add(temp);
 
         temp = new JPanel(new FlowLayout());
@@ -105,6 +113,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
         pinyin.addKeyListener(enterListener);
         english.addKeyListener(enterListener);
         chars.addKeyListener(enterListener);
+        trad.addKeyListener(enterListener);
         book.addKeyListener(enterListener);
         chapter.addKeyListener(enterListener);
 
@@ -117,6 +126,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
             pinLabel.setForeground(Color.black);
             engLabel.setForeground(Color.black);
             charLabel.setForeground(Color.black);
+            tradLabel.setForeground(Color.black);
 
             if (pinyin.getText().length() == 0) {
                 pinLabel.setForeground(Color.red);
@@ -129,7 +139,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
                 return;
             }
 
-            Record rec = new Record(-1, pinyin.getText(), chars.getText(), "", english.getText(), book.getText(), chapter.getText());
+            Record rec = new Record(-1, pinyin.getText(), chars.getText(), trad.getText(), english.getText(), book.getText(), chapter.getText());
             try {
                 CharApp.getInstance().getRecord().addRecord(rec);
             } catch (Exception ex) {
@@ -143,6 +153,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
             CharApp.getInstance().getListPanel().getTable().scrollRectToVisible(v);
             pinyin.setText("");
             chars.setText("");
+            trad.setText("");
             english.setText("");
             pinyin.requestFocusInWindow();
         } else {

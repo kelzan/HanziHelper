@@ -59,7 +59,7 @@ public class ListPanel extends JPanel {
         try {
             this.setLayout(new BorderLayout());
             this.setPreferredSize(new Dimension(700, 400));
-            String[] columnNames = {"Order", "Pinyin", "Chinese", "English", "Book", "Chap"};
+            String[] columnNames = {"Order", "Pinyin", "Chinese", "Trad", "English", "Book", "Chap"};
 
             int[] widths = loadColumnWidths();
 
@@ -161,7 +161,7 @@ public class ListPanel extends JPanel {
         }
 
         public int getColumnCount() {
-            return 6;
+            return 7;
         }
 
         public int getRowCount() {
@@ -186,10 +186,12 @@ public class ListPanel extends JPanel {
                 case 2:
                     return record.getChars();
                 case 3:
-                    return record.getEnglish();
+                    return record.getTrad();
                 case 4:
-                    return record.getBook();
+                    return record.getEnglish();
                 case 5:
+                    return record.getBook();
+                case 6:
                     return record.getChapter();
                 default:
                     return "";
@@ -214,9 +216,9 @@ public class ListPanel extends JPanel {
             comp.setForeground(Color.black);
             comp.setOpaque(true);
             comp.setBackground(isSelected ? new Color(240, 240, 0) : Color.white);
-            if (column == 2) {
+            if (column == 2 || column == 3) {
                 comp.setFont(chineseFont);
-            } else if (column == 4 || column == 5) {
+            } else if (column == 5 || column == 6) {
                 comp.setFont(smallFont);
             } else {
                 comp.setFont(defaultFont);
@@ -244,10 +246,10 @@ public class ListPanel extends JPanel {
     public void saveColumnWidths() {
         StringBuffer sb = new StringBuffer();
         TableColumn column = null;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             column = table.getColumnModel().getColumn(i);
             sb.append(column.getPreferredWidth());
-            if (i < 5) {
+            if (i < 6) {
                 sb.append(",");
             }
         }
@@ -255,8 +257,8 @@ public class ListPanel extends JPanel {
     }
 
     private int[] loadColumnWidths() {
-        int[] defaults = new int[]{40, 100, 200, 200, 150, 50};
-        int[] widths = new int[6];
+        int[] defaults = new int[]{40, 100, 200, 200, 200, 150, 50};
+        int[] widths = new int[7];
 
         String prefs = CharProps.getProperty("column.widths");
         try {
