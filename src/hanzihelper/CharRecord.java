@@ -40,6 +40,9 @@ public class CharRecord {
         File f = new File(recordFile);
         BufferedReader br;
         if (!f.exists()) {
+            f = new File("record.rec");
+        }
+        if (!f.exists()) {
             try {
                 br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/record.rec"), "UTF-8"));
             } catch (Exception e) {

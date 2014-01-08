@@ -29,8 +29,9 @@ import java.util.*;
 import java.util.List;
 
 /**
- * This component renders the characters in a grid for copying and practice. It's this component
- * that gets sent to the printer. It's complicated and messy.
+ * This component renders the characters in a grid for copying and practice.
+ * It's this component that gets sent to the printer. It's complicated and
+ * messy.
  */
 public class GridPanel extends JPanel implements Printable {
 
@@ -51,7 +52,12 @@ public class GridPanel extends JPanel implements Printable {
     private boolean header = true;
     private boolean gridLines = true;
     private boolean gridStyle = false;
-    private Color guidesColor = Color.gray;
+    //private Color guidesColor1 = Color.gray;
+    //private Color guidesColor2 = Color.lightGray;
+    //private Color boxColor = Color.darkGray;
+    private Color guidesColor1 = new Color(180,180,180);
+    private Color guidesColor2 = new Color(230,230,230);
+    private Color boxColor = new Color(100,100,100);
 
     public GridPanel(PrintMode printMode) {
         this.printMode = printMode;
@@ -86,10 +92,10 @@ public class GridPanel extends JPanel implements Printable {
                 CharProps.getIntProperty("font.other.prop", Font.PLAIN),
                 CharProps.getIntProperty("font.other.size", 10));
 
-        String guidesColorString = CharProps.getStringProperty("guides.color", "gray");
-        if (guidesColorString.equalsIgnoreCase("lightgray")) {
-            guidesColor = Color.lightGray;
-        }
+        //String guidesColorString = CharProps.getStringProperty("guides.color", "gray");
+        //if (guidesColorString.equalsIgnoreCase("lightgray")) {
+        //    guidesColor1 = Color.lightGray;
+        //}
 
         this.setPreferredSize(preferredSize);
 
@@ -162,36 +168,37 @@ public class GridPanel extends JPanel implements Printable {
         }
 
         // Draw the boxes
+        g.setColor(boxColor);
         if (gridLines) {
-            Color gray = new Color(200, 200, 200);
+            //Color gray = new Color(200, 200, 200);
             for (int i = 0; i < boxesAcross; i++) {
                 for (int j = 0; j < boxesDown; j++) {
                     int x = x1 + (dx / 2) + i * boxW;
                     int y = y1 + (dy / 2) + j * boxH;
-                    g.drawRect(x, y, boxW, boxH);
                     if (drawGuides) {
-                        g.setColor(Color.gray);
+                        g.setColor(guidesColor1);
                         g.drawLine(x + boxW / 2, y, x + boxW / 2, y + boxH);
                         g.drawLine(x, y + boxH / 2, x + boxW, y + boxH / 2);
                         if (gridStyle) {
-                            g.setColor(Color.lightGray);
+                            g.setColor(guidesColor2);
                             g.drawLine(x + boxW / 4, y, x + boxW / 4, y + boxH);
                             g.drawLine(x + boxW / 4 + boxW / 2, y, x + boxW / 4 + boxW / 2, y + boxH);
                             g.drawLine(x, y + boxH / 4, x + boxW, y + boxH / 4);
                             g.drawLine(x, y + boxH / 2 + boxH / 4, x + boxW, y + boxH / 2 + boxH / 4);
                         } else {
-                            g.setColor(guidesColor);
+                            g.setColor(guidesColor2);
                             g.drawLine(x, y, x + boxW, y + boxH);
                             g.drawLine(x + boxW, y, x, y + boxH);
                         }
-                        g.setColor(Color.black);
+                        g.setColor(boxColor);
                     }
+                    g.drawRect(x, y, boxW, boxH);
                 }
             }
         }
 
+        g.setColor(Color.black);
         // Finally, draw the text
-
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -206,7 +213,6 @@ public class GridPanel extends JPanel implements Printable {
         } else if (printMode.getStyle() == PrintMode.STYLE_READING) {
             charsPerPage = boxesDown * boxesAcross;
         }
-
 
         // Get the text to draw
         PrintableRecord[] printableRecords = new PrintableRecord[charsPerPage];
@@ -290,7 +296,6 @@ public class GridPanel extends JPanel implements Printable {
             return;
         }
 
-
         g.setFont(record.getFont());
 
         FontMetrics fm = g.getFontMetrics(g.getFont());
@@ -338,7 +343,6 @@ public class GridPanel extends JPanel implements Printable {
             metrics = getFontMetrics(pinyinFont);
         } while (getFontWidth(pinyinFont) * 8 > boxW);
 
-
         fontSize = 10;
         do {
             otherFont = new Font(otherFont.getFontName(), Font.PLAIN, fontSize -= 1);
@@ -357,11 +361,12 @@ public class GridPanel extends JPanel implements Printable {
     }
 
     /**
-     * Since the boxes to draw in need to be a constant size, the number of boxes and hence the
-     * number of pages changes and needs to be recalced, especially at print time.
+     * Since the boxes to draw in need to be a constant size, the number of
+     * boxes and hence the number of pages changes and needs to be recalced,
+     * especially at print time.
      *
      * @param height Drawable area height
-     * @param width  Drawable area width
+     * @param width Drawable area width
      */
     private int calcPages(int width, int height) {
         //int x1 = 0;
