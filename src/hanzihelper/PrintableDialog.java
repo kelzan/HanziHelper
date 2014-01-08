@@ -38,7 +38,7 @@ public class PrintableDialog extends JDialog implements ActionListener {
     private String[] styles = new String[]{"One per row", "Cram", "Rows", "Read"};
     private String[] texts = new String[]{"None", "Chinese", "Pinyin", "English", "Pinyin/English"
     /*, "Pinyin/Chinese" */ }; // 1.0 - this is hard
-    private JCheckBox guides, randomize, fillPage, header, lines;
+    private JCheckBox guides, grid, randomize, fillPage, header, lines;
     private JButton fontButton;
     private JButton prev, next;
     private PageFormat format = null;
@@ -94,6 +94,8 @@ public class PrintableDialog extends JDialog implements ActionListener {
 
         guides = new JCheckBox("Guides");
         guides.setBackground(CharApp.COLOR_BG);
+        grid = new JCheckBox("Grid Style");
+        grid.setBackground(CharApp.COLOR_BG);
         randomize = new JCheckBox("Random");
         randomize.setBackground(CharApp.COLOR_BG);
         fillPage = new JCheckBox("Fill page");
@@ -103,12 +105,15 @@ public class PrintableDialog extends JDialog implements ActionListener {
         header = new JCheckBox("Header");
         header.setBackground(CharApp.COLOR_BG);
         guides.setSelected("true".equals(CharProps.getProperty("draw.guides")));
+        grid.setSelected("true".equals(CharProps.getProperty("draw.gridstyle")));
+        grid.setEnabled(guides.isSelected());
         randomize.setSelected(gridPanel.isRandomOrder());
         fillPage.setSelected(gridPanel.isFillThePage());
         lines.setSelected(true);
         header.setSelected(true);
 
         guides.addActionListener(this);
+        grid.addActionListener(this);
         randomize.addActionListener(this);
         fillPage.addActionListener(this);
         lines.addActionListener(this);
@@ -132,6 +137,7 @@ public class PrintableDialog extends JDialog implements ActionListener {
         temp.add(new JLabel("Style:"));
         temp.add(style);
         temp.add(guides);
+        temp.add(grid);
         temp.add(randomize);
         temp.add(fillPage);
         controlPanel.add(temp);
@@ -224,6 +230,11 @@ public class PrintableDialog extends JDialog implements ActionListener {
         } else if (e.getSource() == guides) {
             CharProps.getProperties().setProperty("draw.guides", guides.isSelected() + "");
             gridPanel.setDrawGuides(guides.isSelected());
+            grid.setEnabled(guides.isSelected());
+            gridPanel.repaint();
+        } else if (e.getSource() == grid) {
+            CharProps.getProperties().setProperty("draw.gridstyle", grid.isSelected() + "");
+            gridPanel.setGridStyle(grid.isSelected());
             gridPanel.repaint();
         } else if (e.getSource() == randomize) {
             if (randomize.isSelected()) {

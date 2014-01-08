@@ -50,6 +50,7 @@ public class GridPanel extends JPanel implements Printable {
     private boolean fillThePage = false;
     private boolean header = true;
     private boolean gridLines = true;
+    private boolean gridStyle = false;
     private Color guidesColor = Color.gray;
 
     public GridPanel(PrintMode printMode) {
@@ -67,6 +68,9 @@ public class GridPanel extends JPanel implements Printable {
         padding = CharProps.getIntProperty("padding", padding);
         if (CharProps.getProperty("draw.guides") != null) {
             drawGuides = "true".equalsIgnoreCase(CharProps.getProperty("draw.guides"));
+        }
+        if (CharProps.getProperty("draw.gridstyle") != null) {
+            gridStyle = "true".equalsIgnoreCase(CharProps.getProperty("draw.gridstyle"));
         }
 
         // Initialize fonts
@@ -167,17 +171,19 @@ public class GridPanel extends JPanel implements Printable {
                     g.drawRect(x, y, boxW, boxH);
                     if (drawGuides) {
                         g.setColor(Color.gray);
-//                        g.setColor(guidesColor);
-                        //                       g.drawLine(x, y, x + boxW, y + boxH);
-                        //                       g.drawLine(x + boxW, y, x, y + boxH);
                         g.drawLine(x + boxW / 2, y, x + boxW / 2, y + boxH);
                         g.drawLine(x, y + boxH / 2, x + boxW, y + boxH / 2);
-
-                        g.setColor(Color.lightGray);
-                        g.drawLine(x + boxW / 4, y, x + boxW / 4, y + boxH);
-                        g.drawLine(x + boxW / 4 + boxW / 2, y, x + boxW / 4 + boxW / 2, y + boxH);
-                        g.drawLine(x, y + boxH / 4, x + boxW, y + boxH / 4);
-                        g.drawLine(x, y + boxH / 2 + boxH / 4, x + boxW, y + boxH / 2 + boxH / 4);
+                        if (gridStyle) {
+                            g.setColor(Color.lightGray);
+                            g.drawLine(x + boxW / 4, y, x + boxW / 4, y + boxH);
+                            g.drawLine(x + boxW / 4 + boxW / 2, y, x + boxW / 4 + boxW / 2, y + boxH);
+                            g.drawLine(x, y + boxH / 4, x + boxW, y + boxH / 4);
+                            g.drawLine(x, y + boxH / 2 + boxH / 4, x + boxW, y + boxH / 2 + boxH / 4);
+                        } else {
+                            g.setColor(guidesColor);
+                            g.drawLine(x, y, x + boxW, y + boxH);
+                            g.drawLine(x + boxW, y, x, y + boxH);
+                        }
                         g.setColor(Color.black);
                     }
                 }
@@ -358,12 +364,15 @@ public class GridPanel extends JPanel implements Printable {
      * @param width  Drawable area width
      */
     private int calcPages(int width, int height) {
-        int x1 = 0;
-        int y1 = topBox;
-        int x2 = x1 + width;
-        int y2 = y1 + (int) (height - topBox);
-        int w = x2 - x1;
-        int h = y2 - y1;
+        //int x1 = 0;
+        //int y1 = topBox;
+        //int x2 = x1 + width;
+        //int y2 = y1 + (int) (height - topBox);
+        //int y2 = height;
+        //int w = x2 - x1;
+        // int h = y2 - y1;
+        int w = width;
+        int h = height - topBox;
 
         int boxW = (int) (boxWInches * anInch);
         int boxH = (int) (boxHInches * anInch);
@@ -450,6 +459,14 @@ public class GridPanel extends JPanel implements Printable {
 
     public void setDrawGuides(boolean drawGuides) {
         this.drawGuides = drawGuides;
+    }
+
+    public boolean isGridStyle() {
+        return gridStyle;
+    }
+
+    public void setGridStyle(boolean gridStyle) {
+        this.gridStyle = gridStyle;
     }
 
     public int getPages() {
