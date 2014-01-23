@@ -1,47 +1,40 @@
 /*
- Hanzi Helper, http://hanzihelper.sourceforge.net
- Copyright (C) 2005, Colin Jacobs
-
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
-
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
-
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package hanzihelper;
 
 import junit.framework.TestCase;
 
-public class Test extends TestCase {
+/**
+ *
+ * @author klarson
+ */
+public class PinyinUtilTest extends TestCase {
 
     private static String pinyinVowelsLC = "āáǎàōóǒòēéěèīíǐìūúǔùǖǘǚǜü";
     private static String pinyinVowelsUC = "ĀÁǍÀŌÓǑÒĒÉĚÈ";
 
-    public void testPinyin() throws Exception {
+    public PinyinUtilTest(String testName) {
+        super(testName);
+    }
 
-        assertTrue(PinyinUtil.isValidSyllable("ban4"));
-        assertTrue(PinyinUtil.isValidSyllable("can"));
-        assertTrue(PinyinUtil.isValidSyllable("cang"));
-        assertTrue(PinyinUtil.isValidSyllable("chuang"));
-        assertTrue(PinyinUtil.isValidSyllable("a1"));
-        assertTrue(PinyinUtil.isValidSyllable("duan3"));
-        assertTrue(PinyinUtil.isValidSyllable("mei"));
-        assertTrue(PinyinUtil.isValidSyllable("ren"));
-        assertTrue(PinyinUtil.isValidSyllable("zhe"));
-        assertTrue(PinyinUtil.isValidSyllable("e"));
-        assertTrue(!PinyinUtil.isValidSyllable("erg"));
-        assertTrue(!PinyinUtil.isValidSyllable("fnord"));
-        assertTrue(!PinyinUtil.isValidSyllable("hoepner"));
-        assertTrue(!PinyinUtil.isValidSyllable("haueong"));
-        assertTrue(!PinyinUtil.isValidSyllable("hng"));
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
+
+    /**
+     * Test of toUnicode method, of class PinyinUtil.
+     */
+    public void testToUnicode() {
+        System.out.println("toUnicode");
 
         assertEquals("bàn", PinyinUtil.toUnicode("ban4"));
         assertEquals("rén", PinyinUtil.toUnicode("ren2"));
@@ -65,8 +58,18 @@ public class Test extends TestCase {
         assertEquals("nǚ 'ér", PinyinUtil.toUnicode("nü3'er2"));
         assertEquals("diǎn rōng", PinyinUtil.toUnicode("dian3rong1"));
         assertEquals("dì fang", PinyinUtil.toUnicode("di4fang5"));
+//        assertEquals("dì fang", PinyinUtil.toUnicode("dìfang"));
+        assertEquals("dì fang", PinyinUtil.toUnicode("di4 fang5"));
+        assertEquals("xxx", PinyinUtil.toUnicode("xxx"));
+        assertEquals("jiǔ", PinyinUtil.toUnicode("jiǔ"));
 
-//    assertEquals("shangbǎn", PinyinUtil.toUnicode("shangban3"));   // Unlikely and hard to deal with
+    }
+
+    /**
+     * Test of getSyllables method, of class PinyinUtil.
+     */
+    public void testGetSyllables() {
+        System.out.println("getSyllables");
 
         assertTrue(arrayEquals(PinyinUtil.getSyllables("xia4"), new String[]{"xia4"}));
         assertTrue(arrayEquals(PinyinUtil.getSyllables("ban1"), new String[]{"ban1"}));
@@ -81,6 +84,31 @@ public class Test extends TestCase {
         assertTrue(arrayEquals(PinyinUtil.getSyllables("can1guan3"), new String[]{"can1", "guan3"}));
         assertTrue(arrayEquals(PinyinUtil.getSyllables("yi1dianr3"), new String[]{"yi1", "dian3", "er"}));
 
+    }
+
+    /**
+     * Test of isValidSyllable method, of class PinyinUtil.
+     */
+    public void testIsValidSyllable() {
+        System.out.println("isValidSyllable");
+
+        assertTrue(PinyinUtil.isValidSyllable("ban4"));
+        assertTrue(PinyinUtil.isValidSyllable("can"));
+        assertTrue(PinyinUtil.isValidSyllable("cang"));
+        assertTrue(PinyinUtil.isValidSyllable("chuang"));
+        assertTrue(PinyinUtil.isValidSyllable("a1"));
+        assertTrue(PinyinUtil.isValidSyllable("duan3"));
+        assertTrue(PinyinUtil.isValidSyllable("mei"));
+        assertTrue(PinyinUtil.isValidSyllable("ren"));
+        assertTrue(PinyinUtil.isValidSyllable("zhe"));
+        assertTrue(PinyinUtil.isValidSyllable("e"));
+        assertTrue(!PinyinUtil.isValidSyllable("erg"));
+        assertTrue(!PinyinUtil.isValidSyllable("fnord"));
+        assertTrue(!PinyinUtil.isValidSyllable("hoepner"));
+        assertTrue(!PinyinUtil.isValidSyllable("haueong"));
+        assertTrue(!PinyinUtil.isValidSyllable("hng"));
+
+        //assertTrue(PinyinUtil.isValidSyllable("jiǔ"));
     }
 
     private static boolean arrayEquals(String[] array1, String[] array2) {
@@ -98,10 +126,11 @@ public class Test extends TestCase {
     }
 
     private static String arrayToString(String[] array) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < array.length; i++) {
-            sb.append(array[i] + "/");
+        StringBuilder sb = new StringBuilder();
+        for (String array1 : array) {
+            sb.append(array1).append("/");
         }
         return sb.toString();
     }
+
 }
