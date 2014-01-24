@@ -48,6 +48,7 @@ public class PinyinUtilTest extends TestCase {
         assertEquals("huì", PinyinUtil.toUnicode("hui4"));
         assertEquals("nǚ", PinyinUtil.toUnicode("nü3"));
         assertEquals("nǚ", PinyinUtil.toUnicode("nv3"));
+        assertEquals("zi", PinyinUtil.toUnicode("zi"));
 
         assertEquals("xià bān", PinyinUtil.toUnicode("xia4ban1"));
         assertEquals("wǎn shang", PinyinUtil.toUnicode("wan3shang"));
@@ -102,6 +103,7 @@ public class PinyinUtilTest extends TestCase {
         assertTrue(PinyinUtil.isValidSyllable("ren"));
         assertTrue(PinyinUtil.isValidSyllable("zhe"));
         assertTrue(PinyinUtil.isValidSyllable("e"));
+        assertTrue(PinyinUtil.isValidSyllable("yao2"));
         assertTrue(!PinyinUtil.isValidSyllable("erg"));
         assertTrue(!PinyinUtil.isValidSyllable("fnord"));
         assertTrue(!PinyinUtil.isValidSyllable("hoepner"));

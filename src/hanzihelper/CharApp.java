@@ -108,7 +108,6 @@ public class CharApp extends JFrame {
         filterPanel = new FilterPanel(this);
 
 //        this.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
-
         topPanel = new JPanel(new BorderLayout());
         topPanel.add(listPanel, BorderLayout.CENTER);
         this.getContentPane().removeAll();
@@ -186,7 +185,6 @@ public class CharApp extends JFrame {
         JMenu vtrainMenu = new JMenu("VTrain");
         vtrainMenu.setMnemonic(KeyEvent.VK_V);
         vtrainMenu.setBackground(COLOR_BG);
-
 
         menuItem = new JMenuItem("Supermemo",
                 KeyEvent.VK_S);
@@ -281,6 +279,19 @@ public class CharApp extends JFrame {
             }
         });
 
+        menuItem = new JMenuItem("Anki Flashcards",
+                KeyEvent.VK_A);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Export to Anki");
+        subMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportAnki();
+            }
+        });
+
         menuItem = new JMenuItem("Simple Text List",
                 KeyEvent.VK_L);
         menuItem.setBackground(COLOR_BG);
@@ -322,7 +333,6 @@ public class CharApp extends JFrame {
             }
         });
 
-
         menuItem = new JMenuItem("Convert", KeyEvent.VK_V);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
@@ -360,7 +370,6 @@ public class CharApp extends JFrame {
                 fonty.setVisible(true);
             }
         });
-
 
         menu.addSeparator();
         menuItem = new JMenuItem("Exit", KeyEvent.VK_X);
@@ -485,10 +494,8 @@ public class CharApp extends JFrame {
             }
         });
 
-
         this.setJMenuBar(menuBar);
         menuBar.setBackground(COLOR_BG);
-
 
     }
 
@@ -541,7 +548,6 @@ public class CharApp extends JFrame {
 //    texty.setMaximumSize(new Dimension(300, 500));
         JScrollPane scroller = new JScrollPane(texty);
 //    scroller.setSize(300, 500);
-
 
         texty.setCaretPosition(0);
         temp.setMaximumSize(new Dimension(400, 400));
@@ -667,7 +673,6 @@ public class CharApp extends JFrame {
             dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
             dialog.setVisible(true);
 
-
         } catch (Exception e) {
             e.printStackTrace();
             showErrorMessage("Error: " + e.getMessage());
@@ -708,7 +713,6 @@ public class CharApp extends JFrame {
             dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
             dialog.setVisible(true);
 
-
         } catch (Exception e) {
             e.printStackTrace();
             showErrorMessage("Error: " + e.getMessage());
@@ -746,7 +750,6 @@ public class CharApp extends JFrame {
                 dialog.pack();
                 dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
                 dialog.setVisible(true);
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -805,6 +808,20 @@ public class CharApp extends JFrame {
             CharProps.getProperties().setProperty("last.path", path);
             try {
                 RecordExport.plecoExport(record, rFile.getAbsolutePath());
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+
+    public void exportAnki() {
+        record.setSelected(listPanel.getSelectedRows());
+        File rFile = selectFile(".txt", "text files", false, true);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordExport.ankiExport(record, rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }

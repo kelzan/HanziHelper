@@ -15,7 +15,7 @@ ta1	他		he	Book	1
 li4	力		power	Book	2
 nv3	女		woman	Book	2
 ta1	她		she	Book	2
-zi3 / zi	子		child / noun suffix	Book	2
+zi3 zi	子		child / noun suffix	Book	2
 hao3	好		good	Book	2
 ge4	个	個	number of items	Book	2
 ba1	八		eight	Book	2
@@ -58,7 +58,7 @@ ni3	你		you	Book	5
 you4	又		right hand	Book	5
 you3	友		friend	Book	5
 tu3	土		earth	Book	5
-di4 / de	地		ground / -ly	Book	5
+di4 de	地		ground / -ly	Book	5
 zai4	在		at	Book	5
 yun2	云	雲	cloud	Book	5
 yun4	运	運	transport	Book	5
@@ -73,7 +73,7 @@ you3	有		have	Book	6
 wei4	未		not yet	Book	6
 mei4	妹		younger sister	Book	6
 lai2	来	來	come	Book	6
-le / liao3	了		transition / complete	Book	6
+le liao3	了		transition / complete	Book	6
 xiong1	兄		older brother	Book	6
 dui4	兑	兌	to convert	Book	6
 shuo1	说	說	say	Book	6
@@ -87,14 +87,14 @@ dao1	刀		knife	Book	6
 fen1	分		divide	Book	6
 zhi4	至		until	Book	6
 dao4	到		arrive	Book	6
-dao3 / dao4	倒		topple / invert	Book	6
+dao3 dao4	倒		topple / invert	Book	6
 tian1	天		heaven	Book	7
 ming2	明		bright	Book	7
 han4	汉	漢	Han Chinese	Book	7
 ling4	另		other	Book	7
 bie2	别	別	don't	Book	7
 ru2	如		if	Book	7
-xing2 / hang2	行		OK / line	Book	7
+xing2 hang2	行		OK / line	Book	7
 xue2	学	學	study	Book	7
 che1	车	車	vehicle	Book	7
 lian2	连	連	link up	Book	7
@@ -115,7 +115,7 @@ yin1	阴	陰	hidden	Book	8
 na4	那		that	Book	8
 na3	哪		which?	Book	8
 xi1	西		west	Book	8
-yao4 / yao1	要		what / ask for	Book	8
+yao4 yao1	要		what / ask for	Book	8
 jiu3	酒		liquor	Book	8
 cong2	从	從	from	Book	8
 cun4	寸		inch	Book	8
@@ -140,11 +140,12 @@ de2 de dei3	得		obtain; way; must	Book	9
 gong1	公		public	Book	9
 yi3	以		using	Book	9
 zhi1	之		of	Book	9
-wei4 / wei2	为	為	for / act as	Book	9
+wei4 wei2	为	為	for / act as	Book	9
 ban4	办	辦	manage	Book	9
 wu3	午		noon	Book	9
 he2	禾		grain	Book	9
-he2 / huo2	和		with / mix	Book	9
+he2 huo2	和		with / mix	Book	9
+gan1 gan4	干	乾/幹	dry / work	Book	9
 mu3	母		mother	Book	10
 mei3	每		every	Book	10
 hai3	海		sea	Book	10
@@ -166,6 +167,7 @@ shou3	首		head	Book	10
 dao4	道		way	Book	10
 gong1	工		work	Book	10
 jiang1	江		river	Book	10
+fa1 fa4	发	發/髮	send out / hair	Book	10
 chang3	厂	廠	cliff	Book	11
 hou4	后	後	rear	Book	11
 er2	而		and yet	Book	11
@@ -181,7 +183,7 @@ dian4	电	電	electricity	Book	11
 tong2	同		same	Book	11
 xin1	心		heart	Book	11
 bi4	必		inevitably	Book	11
-xiang1 / xiang4	相		mutual / appearance	Book	11
+xiang1 xiang4	相		mutual / appearance	Book	11
 xiang3	想		think about	Book	11
 si1	思		think	Book	11
 jin1	今		now	Book	11
@@ -190,7 +192,7 @@ nian2	年		year	Book	12
 mei2	没	沒	not	Book	12
 guang3	广	廣	shelter	Book	12
 chuang2	床		bed	Book	12
-chang2 / zhang3	长	長	long / chief	Book	12
+chang2 zhang3	长	長	long / chief	Book	12
 zhang1	张	張	sheet (of paper)	Book	12
 ben3	本		source	Book	12
 ti3	体	體	body	Book	12
@@ -219,12 +221,13 @@ xin1	辛		spicy	Book	13
 qin1	亲	親	kin	Book	13
 chan3	产	產	produce	Book	13
 ka3	卡		card	Book	13
-hai2 / huan2	还	還	still / give back	Book	13
+hai2 huan2	还	還	still / give back	Book	13
 kan4	看		look at	Book	13
 tao3	讨	討	ask for	Book	13
 hui2	回		return	Book	13
 jie1	接		receive	Book	13
 cha4	差		fall short	Book	13
+zhao2 zhe	着	著	to catch / -ing	Book	13
 neng2	能		able to	Book	14
 zuo4	作		do (工~)	Book	14
 zuo2	昨		yesterday	Book	14
@@ -250,7 +253,7 @@ hu4	互		reciprocal	Book	14
 ta1	它		it	Book	14
 bi3	比		compared with	Book	14
 pi1	批		criticize	Book	14
-qie1 / qie4	切		to cut / correspond to	Book	14
+qie1 qie4	切		to cut / correspond to	Book	14
 si1	司		department	Book	15
 ci2	词	詞	word	Book	15
 dian3	典		reference book	Book	15
@@ -278,7 +281,7 @@ zhi3	旨		purpose	Book	16
 zhi3	指		point at	Book	16
 lun4	论	論	discuss	Book	16
 ren4	认	認	recognize	Book	16
-zhi3 / zhi1	只		only / one of a pair	Book	16
+zhi3 zhi1	只		only / one of a pair	Book	16
 zhi1	织	織	weave	Book	16
 shi2	识	識	knowledge	Book	16
 yin1	音		sound	Book	16
@@ -286,11 +289,11 @@ yi4	意		idea	Book	16
 cheng2	成		turn into	Book	16
 cheng2	城		town	Book	16
 zhe3	者		specialist	Book	16
-dou1 / du1	都		all / metropolis	Book	16
+dou1 du1	都		all / metropolis	Book	16
 zhu1	猪	豬	pig	Book	16
 lao3	老		old	Book	16
 xiao4	孝		filial piety	Book	16
-jiao1 / jiao4	教		teach / teach	Book	16
+jiao1 jiao4	教		teach / teach	Book	16
 ran2	然		however	Book	16
 dang1	当	當	act as	Book	17
 shi1	尸	屍	corpse	Book	17
@@ -339,6 +342,7 @@ xing4	幸		good fortune	Book	18
 ping2	平		level	Book	18
 ping2	苹	蘋	apple	Book	18
 ping2	评	評	comment on	Book	18
+zhu4	注	注/註	pour / record notes	Book	18
 shi4	事		affair	Book	19
 mian4	面		face; flour	Book	19
 ci3	此		this	Book	19
@@ -348,7 +352,7 @@ bu4	部		section	Book	19
 bei3	北		north	Book	19
 jiang1	将	將	going to	Book	19
 dong1	东	東	east	Book	19
-yue4 / le4	乐	樂	music / happy	Book	19
+yue4 le4	乐	樂	music / happy	Book	19
 suan4	算		reckon	Book	19
 di4	第		number	Book	19
 di4	弟		younger brother	Book	19
@@ -423,7 +427,7 @@ niu2	牛		cow	Book	22
 jian4	件		number of things	Book	22
 ge1	哥		older brother	Book	22
 ge1	歌		song	Book	22
-ying1 / ying4	应	應	should	Book	22
+ying1 ying4	应	應	should	Book	22
 xiang4	向		towards	Book	22
 xiang3	响	響	noisy	Book	22
 hua1	花		flower	Book	22
@@ -435,14 +439,14 @@ peng4	碰		bump into	Book	23
 shi3	史		history	Book	23
 shi3	使		use	Book	23
 geng4	更		even more	Book	23
-pian2 / bian4	便		advantageous / convenient	Book	23
+pian2 bian4	便		advantageous / convenient	Book	23
 ying1	英		hero	Book	23
 kuai4	块	塊	lump	Book	23
 kuai4	快		quick	Book	23
 jue2	决	決	decide	Book	23
-jue2 / jiao4	觉	覺	feel / sleep	Book	23
+jue2 jiao4	觉	覺	feel / sleep	Book	23
 ding4	定		decide on	Book	23
-zhong4 / chong2	重		heavy / repeat	Book	23
+zhong4 chong2	重		heavy / repeat	Book	23
 dong3	董		director	Book	23
 dong3	懂		understand	Book	23
 chui2	垂		droop	Book	23
@@ -516,7 +520,7 @@ chi2	持		maintain	Book	26
 te4	特		special	Book	26
 yi4	义	義	just	Book	26
 feng1	风	風	wind	Book	26
-shu4 / shu3	数	數	number / to count	Book	26
+shu4 shu3	数	數	number / to count	Book	26
 lou2	楼	樓	story	Book	26
 ceng2	层	層	tier	Book	26
 shi4	室		a room	Book	26
@@ -535,6 +539,7 @@ zhi4	治		treat (disease)	Book	26
 tai2	抬		raise	Book	26
 shi3	始		start	Book	26
 rong2	容		tolerate	Book	26
+gu3	谷	谷/穀	valley; grain	Book	26
 shi4	士		scholar	Book	27
 zhi4	志		intention	Book	27
 sheng1	声	聲	voice	Book	27
@@ -553,12 +558,12 @@ gai1	该	該	ought	Book	27
 hai2	孩		youngster	Book	27
 ke2	咳		cough	Book	27
 ke4	刻		quarter (hour)	Book	27
-shui2 / shei2	谁	誰	who?	Book	27
+shui2 shei2	谁	誰	who?	Book	27
 tui1	推		push	Book	27
 nan2	难	難	difficult	Book	27
 zhun3	准	準	accurate	Book	27
 ji2	集		assemble	Book	27
-chu4 / chu3	处	處	place / deal with	Book	27
+chu4 chu3	处	處	place / deal with	Book	27
 ge4	各		each	Book	27
 lu4	路		path	Book	27
 ke4	客		guest	Book	27
@@ -596,11 +601,12 @@ ji2	级	級	grade	Book	28
 quan2	泉		spring (of water)	Book	28
 yuan2	原		original	Book	28
 yuan4	愿	願	to desire	Book	28
+zang1 zang4	脏	髒/臟	dirty / internal organs	Book	28
 ji2	吉		auspicious	Book	29
-jie2 / jie1	结	結	tie up	Book	29
+jie2 jie1	结	結	tie up	Book	29
 xi3	喜		celebration	Book	29
 zhou1	周	週	week	Book	29
-diao4 / tiao2	调	調	tune / adjust	Book	29
+diao4 tiao2	调	調	tune / adjust	Book	29
 shang4	尚		esteem	Book	29
 tang3	躺		lie down	Book	29
 tang2	堂		hall	Book	29
@@ -620,6 +626,8 @@ gan3	感		feel	Book	29
 han3	喊		shout	Book	29
 bu4	布		cloth	Book	29
 xi1	希		to wish	Book	29
+hua2 hua4	划	划/劃	to row / to plan	Book	29
+fu4	复	復/複	repeat / complex	Book	29
 jie2	节	節	festival	Book	30
 que4	却	卻	despite	Book	30
 jiao3	脚	腳	foot	Book	30
@@ -683,7 +691,7 @@ ke1	科		classification	Book	31
 yan2	研		research	Book	31
 yao1	幺	么	smallest	Book	32
 xi4	系		cluster	Book	32
-lei4 / lei3	累		exhausted / accumulate	Book	32
+lei4 lei3	累		exhausted / accumulate	Book	32
 jian4	践	踐	carry out	Book	32
 qian2	钱	錢	money	Book	32
 qian3	浅	淺	shallow	Book	32
@@ -693,7 +701,7 @@ yu4	育		nurture	Book	32
 liu2	流		to flow	Book	32
 xue2	穴		hole	Book	32
 jiu1	究		investigate	Book	32
-kong1 / kong4	空		empty / free time	Book	32
+kong1 kong4	空		empty / free time	Book	32
 tu1	突		prominent	Book	32
 shen1	深		deep	Book	32
 you2	由		because	Book	32
@@ -725,7 +733,7 @@ yu3	予		bestow	Book	33
 yu4	预	預	in advance	Book	33
 she4	舍		shed	Book	33
 shu1	舒		spread out	Book	33
-xing4 / xing1	兴	興	excited	Book	33
+xing4 xing1	兴	興	excited	Book	33
 mao2	矛		spear	Book	33
 ju2	橘		tangerine	Book	33
 ju2	桔		tangerine	Book	33
@@ -852,7 +860,7 @@ yi4	译	譯	translate	Book	37
 yu2	余	餘	surplus	Book	37
 chu2	除		to remove	Book	37
 cha2	茶		tea	Book	37
-qi2 / ji1	奇		strange; even	Book	37
+qi2 ji1	奇		strange; even	Book	37
 qi2	骑	騎	ride	Book	37
 yi3	椅		chair	Book	37
 ji4	寄		send	Book	37
@@ -939,7 +947,7 @@ ci2	磁		magnet	Book	40
 diu1	丢	丟	mislay	Book	40
 yan4	宴		banquet	Book	40
 ye4	夜		night	Book	40
-jia4 / jia3	假		vacation / false	Book	40
+jia4 jia3	假		vacation / false	Book	40
 qiang2	墙	牆	wall	Book	40
 ying2	赢	贏	win	Book	40
 qin2	琴		musical instrument	Study	1
@@ -975,7 +983,7 @@ ya1	鸭	鴨	duck	Study	2
 chao3	炒		fry	Study	2
 bao4	暴		violent	Study	2
 bao4	爆		explode	Study	2
-zha2 / zha4	炸		deep fry / explode	Study	2
+zha2 zha4	炸		deep fry / explode	Study	2
 wan1	弯	彎	bend	Study	2
 wan1	湾	灣	harbor	Study	2
 guai3	拐		turn	Study	2
@@ -1017,7 +1025,7 @@ yu4	寓		residence	Study	4
 ku4	库	庫	warehouse	Study	4
 ku4	裤	褲	pants	Study	4
 yao4	钥	鑰	key	Study	4
-chi2 / shi	匙		spoon / key	Study	4
+chi2 shi	匙		spoon / key	Study	4
 kuai4	筷		chopsticks	Study	4
 li4	厉	厲	harsh	Study	4
 hai4	害		harmful	Study	4
@@ -1065,7 +1073,7 @@ gun3	滚	滾	roll	Study	6
 wei4	味		flavor	Study	7
 qu4	趣		fun	Study	7
 gu3	鼓		drum	Study	7
-zai4 / zai3	载	載	carry / write down	Study	7
+zai4 zai3	载	載	carry / write down	Study	7
 fu2	弗		not	Study	7
 fei4	费	費	cost	Study	7
 xian4	线	線	line	Study	7
@@ -1073,7 +1081,7 @@ gu3	股		thigh	Study	7
 pi4	屁		flatulence	Study	7
 pin1	拼		piece together	Study	7
 zhao1	招		beckon	Study	7
-dai4 / dai1	待		entertain / stay (=呆)	Study	7
+dai4 dai1	待		entertain / stay (=呆)	Study	7
 lian4	恋	戀	love	Study	7
 chou3	丑	醜	ugly	Study	7
 wu2	无	無	without	Study	7
@@ -1094,13 +1102,14 @@ jing3	警		guard	Study	8
 yin3	饮	飲	drink	Study	8
 zhi1	汁		juice	Study	8
 zhuan1	专	專	focused	Study	8
-zhuan3 / zhuan4	转	轉	turn / rotate	Study	8
+zhuan3 zhuan4	转	轉	turn / rotate	Study	8
 chong1	充		fill	Study	8
 tong3	统	統	order	Study	8
 chuan2	传	傳	pass on	Study	8
 Liu2	刘	劉	destroy	Study	8
 liu2	浏	瀏	clear flowing water	Study	8
 chong3	宠	寵	pamper	Study	8
+chong1	冲	沖	rush	Study	8
 dui4	队	隊	team	Study	9
 ben4	笨		stupid	Study	9
 sen1	森		forest	Study	9
@@ -1113,7 +1122,7 @@ li4	丽	麗	beautiful	Study	9
 yang2	杨	楊	poplar tree	Study	9
 shi4	饰	飾	decoration	Study	9
 fu4	副		assist	Study	9
-zi3 / zai3	仔		careful / young animal	Study	9
+zi3 zai3	仔		careful / young animal	Study	9
 shan4	扇		a fan	Study	9
 meng4	梦	夢	dream	Study	9
 zheng4	证	證	prove	Study	9
@@ -1180,6 +1189,7 @@ ding1	丁		nail	Study	12
 ding1	钉	釘	a nail	Study	12
 ding3	顶	頂	top	Study	12
 ti1	梯		ladder	Study	12
+jin4 jin3	尽	盡/儘	use up / to max extent	Study	12
 zhi3	址		location	Study	13
 gao3	稿		draft	Study	13
 pao4	泡		bubble	Study	13
@@ -1232,7 +1242,7 @@ xiu1	修		decorate, embellish	Study	15
 zhe2	折		break	Study	15
 zhe2	哲		wise	Study	15
 lv4	律		law	Study	15
-xue4 / xie3	血		blood	Study	15
+xue4 xie3	血		blood	Study	15
 xu4	恤		sympathize	Study	15
 sun1	孙	孫	grandchild	Study	15
 sang1	桑		mulberry tree	Study	15
@@ -1279,6 +1289,7 @@ ci2	慈		compassionate	Study	17
 mi4	秘		secret	Study	17
 ji4	迹	跡	trace	Study	17
 si1	丝	絲	thread	Study	17
+huo4	获	獲/穫	capture/harvest	Study	17
 dao3	岛	島	island	Study	18
 si1	斯		thus	Study	18
 wu1	乌	烏	crow	Study	18
@@ -1288,7 +1299,7 @@ huang2	皇		royal	Study	18
 feng4	凤	鳳	male phoenix	Study	18
 huang2	凰		female phoenix	Study	18
 xiu4	袖		sleeve	Study	18
-cheng2 / sheng4	盛		fill / flourishing	Study	18
+cheng2 sheng4	盛		fill / flourishing	Study	18
 zhen4	镇	鎮	town	Study	18
 hu1	乎		surmise	Study	18
 long2	笼	籠	cage	Study	18
@@ -1344,7 +1355,7 @@ huang3	谎	謊	lie	Study	21
 yong1	拥	擁	hug	Study	21
 wa2	娃		baby	Study	21
 zhu4	柱		pillar	Study	21
-jiang4 / xiang2	降		descend / surrender	Study	21
+jiang4 xiang2	降		descend / surrender	Study	21
 yan2	岩		rock	Study	21
 zhan4	战	戰	war	Study	21
 li4	栗		chestnut	Study	21
@@ -1365,7 +1376,7 @@ lun2	伦	倫	human relations	Study	22
 miao4	妙		wonderful	Study	22
 hu1	呼		exhale	Study	22
 zhu1	诸	諸	all (~位)	Study	22
-o2 / o4	哦		Oh!	Study	22
+o2 o4	哦		Oh!	Study	22
 shan4	善		good (~善)	Study	22
 bei1	悲		sad	Study	22
 gui1	归	歸	return (回)	Study	22
@@ -1380,7 +1391,7 @@ xuan1	宣		announce	Study	22
 chao2	嘲		ridicule	Study	22
 xie2	邪		evil (~恶)	Study	22
 zeng1	憎		hate	Study	23
-e4 / e3 / wu4	恶	惡	evil / nauseous / hate	Study	23
+e4 e3 wu4	恶	惡	evil / nauseous / hate	Study	23
 mi2	弥	彌	extensive	Study	23
 jiu4	救		rescue	Study	23
 shu2	赎	贖	redeem	Study	23
@@ -1395,7 +1406,7 @@ mou2	谋	謀	scheme	Study	23
 zhi4	置		put	Study	23
 jian3	拣	揀	choose (选)	Study	23
 qiang2	强	強	strong (~大)	Study	23
-liang4 / liang2	量		amount / to measure	Study	23
+liang4 liang2	量		amount / to measure	Study	23
 ju4	惧	懼	fear (怕)	Study	23
 duan4	断	斷	cut off	Study	23
 kuo4	扩	擴	enlarge	Study	23
@@ -1433,11 +1444,12 @@ lan4	烂	爛	messy	Study	25
 zhen4	阵	陣	battle formation	Study	25
 du2	独	獨	alone (孤)	Study	25
 xuan2	玄		profound	Study	25
-lv4 / shuai4	率		rate / to lead	Study	25
+lv4 shuai4	率		rate / to lead	Study	25
 fei1	菲		luxuriant	Study	25
 zhang4	账	賬	account	Study	25
 mi2	迷		be lost	Study	25
 tan2	坛	壇	altar	Study	25
+hui4	汇	彙/匯	gather together/converge	Study	25
 xian4	献	獻	offer up	Study	26
 zao4	造		make (制~)	Study	26
 zi1	资	資	expenses	Study	26
@@ -1508,7 +1520,7 @@ su1	苏	蘇	revive	Study	29
 bang4	棒		club	Study	29
 heng1	亨		go smoothly	Study	29
 zi3	姊		elder sister (姐)	Study	29
-pu1 / pu4	铺	鋪	spread / a store	Study	29
+pu1 pu4	铺	鋪	spread / a store	Study	29
 xiang4	项	項	funds	Study	29
 zhu1	朱		bright red	Study	29
 shu1	殊		special (特~)	Study	29
@@ -1525,7 +1537,7 @@ qiong2	穷	窮	poor	Study	30
 tou1	偷		steal	Study	30
 gan3	赶	趕	catch up	Study	30
 yu4	郁	鬱	gloomy	Study	30
-men1 / men4	闷	悶	stuffy / depressed	Study	30
+men1 men4	闷	悶	stuffy / depressed	Study	30
 pu3	谱	譜	chart	Study	30
 Luo4	洛		Luo River	Study	30
 luo4	落		fall	Study	30
@@ -1558,7 +1570,7 @@ niu3	扭		twist	Study	31
 mo1	摸		touch	Study	31
 yan3	掩		hide	Study	31
 lei4	类	類	type (~似)	Study	31
-bi4 / pi4	辟	闢	monarch / open up	Study	32
+bi4 pi4	辟	闢	monarch / open up	Study	32
 bi4	避		evade	Study	32
 xun2	巡		patrol (~逻)	Study	32
 luo2	逻	邏	patrol (巡~)	Study	32
@@ -1609,7 +1621,7 @@ zhi2	值		be worth	Study	34
 jia4	价	價	price	Study	34
 yin4	印		print	Study	34
 qiang1	枪	槍	gun	Study	34
-bei4 / bei1	背		back&nbsp;&nbsp;/ carry on the back	Study	34
+bei4 bei1	背		back&nbsp;&nbsp;/ carry on the back	Study	34
 xing2	刑		punishment (~罚)	Study	34
 xing2	型		type	Study	34
 xiao4	效		effect	Study	34
@@ -1637,9 +1649,10 @@ jun1	均		even	Study	35
 zhan3	斩	斬	chop	Study	35
 ce4	策		plan (政~)	Study	35
 mi4	密		thick (秘~)	Study	35
+zhu4	著		write books	Study	35
 zhuang4	状	狀	condition	Study	36
 jian3	减	減	subtract	Study	36
-lu4 / lou4	露		expose / reveal	Study	36
+lu4 lou4	露		expose / reveal	Study	36
 bi4	毕	畢	finish	Study	36
 fu4	妇	婦	wife (~女)	Study	36
 shi1	施		carry out (实~)	Study	36
@@ -1665,7 +1678,7 @@ ji4	季		season	Study	37
 xiong2	雄		male (男)	Study	37
 ruo4	弱		weak	Study	37
 bu3	补	補	mend	Study	37
-Fo2 / fu2	佛		Buddha / seemingly	Study	37
+Fo2 fu2	佛		Buddha / seemingly	Study	37
 tan4	探		explore	Study	37
 huo3	伙		group of people	Study	37
 fan4	范	範	example	Study	37
@@ -1679,7 +1692,7 @@ xu4	序		order	Study	37
 lei4	泪	淚	tears	Study	37
 kun1	昆		descendent (~虫)	Study	38
 hun4	混		mix up	Study	38
-juan3 / juan4	卷		roll / exam paper	Study	38
+juan3 juan4	卷		roll / exam paper	Study	38
 quan1	圈		circle	Study	38
 ren3	忍		endure	Study	38
 qi1	妻		wife (~子)	Study	38
@@ -1718,7 +1731,7 @@ shan3	闪	閃	flash	Study	39
 tie1	贴	貼	glue	Study	39
 ci4	刺		stab	Study	39
 jin4	劲	勁	strength	Study	40
-tiao1 / tiao3	挑		pick out / incite	Study	40
+tiao1 tiao3	挑		pick out / incite	Study	40
 dun4	盾		shield	Study	40
 zhu1	珠		bead	Study	40
 xian2	闲	閑	idle	Study	40
@@ -1776,7 +1789,7 @@ bi4	壁		wall (墙~)	Study	42
 ta3	塔		tower	Study	42
 qin1	侵		invade	Study	42
 hui1	恢		restore	Study	42
-bao2 / bo2	薄		thin / slight	Study	42
+bao2 bo2	薄		thin / slight	Study	42
 shen1	伸		stretch	Study	43
 shu3	署		public office	Study	43
 shu3	薯		potato	Study	43
@@ -1790,14 +1803,14 @@ chou2	绸	綢	silk (丝~)	Study	43
 pao2	袍		gown	Study	43
 xiao3	晓	曉	dawn (破~)	Study	43
 po1	坡		slope	Study	43
-guan4 / guan1	冠		first place / crown	Study	43
+guan4 guan1	冠		first place / crown	Study	43
 gu1	估		estimate	Study	43
 yun3	允		allow (~许)	Study	43
 gong4	贡	貢	tribute	Study	43
 xiang2	详	詳	detailed	Study	43
 su4	肃	肅	respectful	Study	43
 yao1	邀		invite	Study	43
-sai1 / se4	塞		stuff in / block up	Study	44
+sai1 se4	塞		stuff in / block up	Study	44
 qiang3	抢	搶	rob	Study	44
 lin2	邻	鄰	neighbor	Study	44
 zhuang4	撞		run into	Study	44
@@ -1817,7 +1830,7 @@ pen1	喷	噴	spray	Study	44
 yin1	姻		marriage	Study	44
 ge1	割		cut off (收~)	Study	44
 chai2	柴		firewood	Study	44
-zuan1 / zuan4	钻	鑽	drill / diamond	Study	45
+zuan1 zuan4	钻	鑽	drill / diamond	Study	45
 zong1	综	綜	to sum up	Study	45
 kou4	扣		button	Study	45
 kuo4	阔	闊	wide (宽~)	Study	45
@@ -1837,7 +1850,7 @@ rui4	锐	銳	sharp (尖~)	Study	45
 tian2	填		fill in	Study	45
 bing3	饼	餅	cake (~干)	Study	45
 bi1	逼		force	Study	45
-tu3 / tu4	吐		spit / vomit	Study	46
+tu3 tu4	吐		spit / vomit	Study	46
 mai2	埋		bury	Study	46
 mo4	墨		ink	Study	46
 li2	厘		one thousandth	Study	46
@@ -1866,7 +1879,7 @@ wa1	挖		dig	Study	47
 ban4	扮		dress up as	Study	47
 dao4	稻		rice paddy	Study	47
 jiao1	郊		suburb	Study	47
-gan1 / gan3	杆	桿	pole / shaft	Study	47
+gan1 gan3	杆	桿	pole / shaft	Study	47
 kua4	跨		stride	Study	47
 qi1	欺		cheat	Study	47
 lai4	赖	賴	rely	Study	47
@@ -1884,7 +1897,7 @@ zheng1	睁	睜	open the eyes	Study	48
 huang1	慌		flustered	Study	48
 die1	跌		fall down	Study	48
 yi3	矣		already (已)	Study	48
-ai1 / ai2	挨		be next to / suffer	Study	48
+ai1 ai2	挨		be next to / suffer	Study	48
 feng4	奉		offer	Study	48
 peng3	捧		carry in both hands	Study	48
 chang4	倡		initiate	Study	48
@@ -1902,7 +1915,7 @@ pei2	赔	賠	compensate	Study	49
 shuai1	摔		fall down	Study	49
 chen4	趁		take advantage of	Study	49
 chai1	拆		take apart	Study	49
-yan4 / ye4	咽		to swallow / sob	Study	49
+yan4 ye4	咽		to swallow / sob	Study	49
 pang4	胖		plump	Study	49
 jiang4	酱	醬	sauce	Study	49
 zhu1	株		tree-trunk	Study	49
@@ -1981,7 +1994,7 @@ shi4	誓		swear	Study	53
 rao2	饶	饒	spare	Study	53
 xin1	薪		salary	Study	53
 jian4	贱	賤	cheap	Study	53
-qu1 / qu3	曲		bent / melody	Study	53
+qu1 qu3	曲		bent / melody	Study	53
 pei4	佩		admire	Study	53
 fen1	吩		leave instructions	Study	53
 wei1	威		impressive strength	Study	53
@@ -1995,7 +2008,7 @@ yi1	伊		he or she	Study	53
 ze2	泽	澤	marsh	Study	53
 yi2	遗	遺	to leave behind	Study	53
 zhen4	震		shake	Study	53
-heng2 / heng4	横	橫	horizontal / perverse	Study	53
+heng2 heng4	横	橫	horizontal / perverse	Study	53
 yin3	隐	隱	hidden	Study	53
 tao2	桃		peach	Study	54
 jia1	佳		excellent (优)	Study	54
@@ -2015,7 +2028,7 @@ yu4	愈		more and more	Study	54
 huan3	缓	緩	sluggish	Study	54
 qing3	顷	頃	hectare	Study	54
 qing1	倾	傾	to lean (靠)	Study	54
-ben1 / ben4	奔		run fast / go straight towards	Study	54
+ben1 ben4	奔		run fast / go straight towards	Study	54
 fei4	废	廢	waste	Study	54
 fan1	帆		sail (篷)	Study	55
 lv2	驴	驢	donkey	Study	55
@@ -2043,7 +2056,7 @@ niao4	尿		urine	Study	56
 mang2	盲		blind	Study	56
 ke2	壳	殼	shell	Study	56
 nen4	嫩		tender	Study	56
-bo1 / bao1	剥	剝	to peel / to peel	Study	56
+bo1 bao1	剥	剝	to peel / to peel	Study	56
 pin2	贫	貧	poor (~穷)	Study	56
 bo2	勃		thriving	Study	56
 bo1	拨	撥	adjust with the hand	Study	56
@@ -2142,12 +2155,12 @@ lan3	榄	欖	olive (橄~)	Study	61
 qian1	迁	遷	move	Study	61
 leng2	棱		edge	Study	61
 nuo2	挪		move	Study	61
-fang1 / fang2	坊		lane&nbsp;&nbsp;/ workshop	Study	61
+fang1 fang2	坊		lane&nbsp;&nbsp;/ workshop	Study	61
 chu3	储	儲	store up	Study	61
 xuan1	喧		noisy (响)	Study	61
 ni4	逆		be contrary to	Study	61
 nai4	奈		to bear	Study	61
-ci4 / si4	伺		wait on / watch	Study	61
+ci4 si4	伺		wait on / watch	Study	61
 ao2	熬		stew	Study	61
 zao4	躁		rash	Study	61
 xian2	嫌		suspicion	Study	61
@@ -2216,14 +2229,14 @@ jian4	鉴	鑒	to reflect	Study	64
 gui3	轨	軌	track	Study	64
 yi4	抑		restrain	Study	64
 lu2	炉	爐	oven	Study	64
-xiao1 / xue1	削		peel / exploit	Study	64
+xiao1 xue1	削		peel / exploit	Study	64
 ru3	乳		breast	Study	65
 peng2	彭		sound of drums	Study	65
 peng2	膨		expand	Study	65
 zhang4	胀	脹	to swell	Study	65
 chang2	偿	償	repay	Study	65
 zheng4	症		disease	Study	65
-feng2 / feng4	缝	縫	sew&nbsp;&nbsp;/ crack	Study	65
+feng2 feng4	缝	縫	sew&nbsp;&nbsp;/ crack	Study	65
 liu3	柳		willow	Study	65
 yao2	遥	遙	distant	Study	65
 jia4	嫁		take a husband	Study	65
@@ -2240,7 +2253,7 @@ yan4	艳	艷	gorgeous	Study	65
 wen3	吻		kiss	Study	66
 dian4	奠		establish	Study	66
 heng2	恒	恆	permanent	Study	66
-ma1 / mo3	抹		wipe / smear	Study	66
+ma1 mo3	抹		wipe / smear	Study	66
 mian2	眠		sleep	Study	66
 tuo3	妥		appropriate	Study	66
 ding1	盯		stare at	Study	66
@@ -2308,7 +2321,7 @@ gua3	寡		widowed	Study	69
 tang3	倘		supposing	Study	69
 dian4	垫	墊	place under	Study	69
 zai1	栽		to plant	Study	69
-dai3 / dai4	逮		capture / capture	Study	69
+dai3 dai4	逮		capture / capture	Study	69
 xi2	媳		daughter-in-law	Study	69
 yu4	豫		pleased	Study	69
 zha1	渣		dregs	Study	69
@@ -2316,7 +2329,7 @@ chun2	唇		lip	Study	69
 shuang1	霜		frost	Study	69
 zhi4	帜	幟	flag	Study	69
 yu4	浴		bath	Study	69
-hua2 / hua1	哗	嘩	uproar / gurgle!	Study	69
+hua2 hua1	哗	嘩	uproar / gurgle!	Study	69
 shu4	庶		numerous	Study	70
 zhe1	遮		cover up	Study	70
 geng1	耕		to plow	Study	70
@@ -2331,7 +2344,7 @@ pou1	剖		dissect	Study	70
 fu3	俯		bow the head	Study	70
 xi1	晰		clear	Study	70
 lang2	廊		hall (厅)	Study	70
-yun1 / yun4	晕	暈	dizzy / halo	Study	70
+yun1 yun4	晕	暈	dizzy / halo	Study	70
 zhi4	稚		childish	Study	70
 cuo4	挫		setback	Study	70
 lve4	掠		plunder	Study	70
@@ -2359,7 +2372,7 @@ he4	赫		hertz	Study	71
 lu2	卢	盧	gourd	Study	71
 shuo4	硕	碩	large	Study	72
 pin4	聘		engage	Study	72
-ai4 / ai1	唉		What a pity! / Gosh!	Study	72
+ai4 ai1	唉		What a pity! / Gosh!	Study	72
 mao2	髦		long hair	Study	72
 han4	憾		regret	Study	72
 dai4	贷	貸	loan	Study	72
@@ -2461,7 +2474,7 @@ zhu4	铸	鑄	to cast (metal)	Study	77
 wu3	侮		insult	Study	77
 guo1	郭		outer city wall	Study	77
 kuo4	廓		outline	Study	77
-ba1 / pa2	扒		hold on to / rake up	Study	77
+ba1 pa2	扒		hold on to / rake up	Study	77
 xiu3	朽		decayed	Study	77
 shuo4	烁	爍	shining	Study	77
 yao2	窑	窯	kiln	Study	77
@@ -2485,7 +2498,7 @@ liang2	粱		sorghum	Study	78
 jiu1	揪		hold tight	Study	78
 jian4	溅	濺	splash	Study	78
 wu1	诬	誣	accuse falsely	Study	78
-ning3 / ning2	拧	擰	screw / wring	Study	78
+ning3 ning2	拧	擰	screw / wring	Study	78
 yo1	哟	喲	Oh!	Study	78
 zhan3	盏	盞	small cup	Study	78
 zao2	凿	鑿	chisel	Study	78
@@ -2536,6 +2549,7 @@ bian3	贬	貶	belittle	Study	80
 bian4	辫	辮	braid	Study	80
 xie2	谐	諧	in harmony	Study	80
 shan4	擅		act without authority	Study	80
+mi1	眯	瞇	squint	Study	80
 ang2	昂		raise high	Study	81
 Deng4	邓	鄧	Deng (surname)	Study	81
 ying1	鹰	鷹	eagle	Study	81
@@ -2565,7 +2579,7 @@ lv4	滤	濾	filter	Study	82
 wu4	晤		meet socially	Study	82
 zong1	棕		palm	Study	82
 miao3	渺		negligible	Study	82
-hong1 / hong4	哄		hubbub / cause an uproar	Study	82
+hong1 hong4	哄		hubbub / cause an uproar	Study	82
 zhe2	辙	轍	rut	Study	82
 tai4	汰		eliminate	Study	82
 ying3	颖	穎	clever	Study	82
@@ -2575,11 +2589,12 @@ yu2	舆	輿	carriage	Study	82
 zheng4	郑	鄭	solemn	Study	82
 zhi1	肢		limb	Study	82
 si4	肆		unrestrained	Study	82
+dang4	荡	蕩/盪	sway	Study	82
 tang2	塘		pond	Study	83
 kui2	魁		imposing	Study	83
 ni1	妮		girl	Study	83
 zhou4	咒		curse	Study	83
-lei1 / le4	勒		bind tightly / rein in	Study	83
+lei1 le4	勒		bind tightly / rein in	Study	83
 zha3	眨		wink	Study	83
 ba1	疤		scar	Study	83
 rong2	戎		weapons	Study	83
@@ -2594,10 +2609,10 @@ jin1	津		saliva	Study	83
 chi3	耻	恥	shame	Study	83
 dong4	栋	棟	roof beam	Study	83
 zao4	噪		chirp	Study	83
-cha4 / sha1	刹	剎	brief moment / brake	Study	83
+cha4 sha1	刹	剎	brief moment / brake	Study	83
 zhui4	缀	綴	stitch	Study	84
 beng4	迸		to burst forth	Study	84
-tie1 / tie3	帖		obey / invitation card	Study	84
+tie1 tie3	帖		obey / invitation card	Study	84
 ni3	拟	擬	plan to	Study	84
 ou1	殴	毆	brawl	Study	84
 xie4	泄		to leak	Study	84
@@ -2642,7 +2657,7 @@ han4	翰		writing brush	Study	86
 di4	谛	諦	meaning	Study	86
 liao2	辽	遼	vast	Study	86
 xiu4	绣	繡	embroider	Study	86
-xu4 / chu4	畜		raise animals / livestock	Study	86
+xu4 chu4	畜		raise animals / livestock	Study	86
 xu4	蓄		to store	Study	86
 bo2	驳	駁	contradict	Study	86
 sha2	啥		what	Study	86
@@ -2653,7 +2668,7 @@ cheng2	澄		become clear	Study	86
 lu3	鲁	魯	crass	Study	86
 chang1	娼		prostitute	Study	86
 ji4	妓		prostitute	Study	86
-cuan2 / zan3	攒	攢	assemble / hoard	Study	86
+cuan2 zan3	攒	攢	assemble / hoard	Study	86
 feng1	锋	鋒	point or edge of a tool	Study	86
 xu2	徐		slowly	Study	87
 dan1	丹		cinnabar	Study	87
@@ -2680,7 +2695,7 @@ bo2	舶		ship	Study	88
 kui4	馈	饋	present as a gift	Study	88
 shen1	绅	紳	member of gentry	Study	88
 zhou4	昼	晝	daytime	Study	88
-pu4 / bao4	曝		expose to the sun / exposure	Study	88
+pu4 bao4	曝		expose to the sun / exposure	Study	88
 ti4	涕		snot	Study	88
 xia2	辖	轄	have jurisdiction over	Study	88
 lao2	唠	嘮	to chatter	Study	88
@@ -2694,7 +2709,7 @@ xuan1	暄		warm (sunshine)	Study	88
 cuo1	磋		discuss	Study	88
 ai4	暧	曖	dim	Study	88
 mei4	昧		hazy	Study	88
-yu4 / xu1	吁		implore / Whoa!	Study	88
+yu4 xu1	吁		implore / Whoa!	Study	88
 huang3	恍		all of a sudden	Study	89
 cha4	诧	詫	astonished	Study	89
 yi4	溢		overflow	Study	89
@@ -2720,7 +2735,7 @@ shang1	裳		clothes	Study	90
 fu2	辐	輻	spoke of a wheel	Study	90
 bang4	磅		pound (unit of weight)	Study	90
 zhu3	瞩	矚	to stare at	Study	90
-bo2 / po1	泊		to anchor / lake	Study	90
+bo2 po1	泊		to anchor / lake	Study	90
 pi4	僻		secluded	Study	90
 ju1	鞠		to bow	Study	90
 song4	讼	訟	sue	Study	90
@@ -2804,7 +2819,7 @@ bi4	庇		to shelter	Study	94
 qia1	掐		to pinch	Study	94
 lan2	婪		greedy	Study	94
 shao1	捎		bring along	Study	94
-ping2 / bing3	屏		screen / get rid of	Study	94
+ping2 bing3	屏		screen / get rid of	Study	94
 xian2	弦		bowstring	Study	94
 ge1	疙		pimple	Study	94
 da	瘩		lump	Study	94
@@ -2820,7 +2835,7 @@ xun4	逊	遜	modest	Study	95
 bi3	鄙		mean	Study	95
 fu4	腹		belly	Study	95
 xie4	泻	瀉	flow out swiftly	Study	95
-pi1 / pi3	劈		chop / split in two	Study	95
+pi1 pi3	劈		chop / split in two	Study	95
 fei3	诽	誹	slander	Study	95
 bang4	谤	謗	slander	Study	95
 ding1	叮		warn repeatedly	Study	95
@@ -2854,6 +2869,7 @@ meng2	萌		sprout	Study	96
 quan4	券		certificate	Study	96
 sai1	腮		cheek	Study	96
 chan2	缠	纏	to wind	Study	96
+lin4	赁	賃	to rent	Study	96
 liang4	晾		air dry	Study	97
 cheng4	秤		scale	Study	97
 kua4	挎		carry on arm or shoulder	Study	97
@@ -2871,7 +2887,7 @@ zhui1	椎		vertebra	Study	97
 bu3	哺		suckle	Study	97
 ju3	咀		to chew	Study	97
 jue2	爵		nobility	Study	97
-jue2 / jiao2	嚼		to chew / to chew	Study	97
+jue2 jiao2	嚼		to chew / to chew	Study	97
 zhen1	斟		pour (tea/wine etc.)	Study	97
 zhuo2	酌		pour (a drink)	Study	97
 ao1	凹		concave	Study	98
@@ -3000,7 +3016,7 @@ Huai2	淮		Huai River	Study	104
 pang2	螃		crab	Study	104
 xie4	蟹		crab	Study	104
 Wei4	魏		Kindom of Wei	Study	104
-ge2 / Ge3	葛		kudzu vine / Ge (surname)	Study	104
+ge2 Ge3	葛		kudzu vine / Ge (surname)	Study	104
 chui2	捶		beat with the fist	Study	104
 zha2	闸	閘	sluice	Study	104
 luo3	裸		naked	Study	104
@@ -3053,7 +3069,7 @@ Tan2	谭	譚	Tan (surname)	Study	106
 tan2	潭		deep pool	Study	106
 la4	腊	臘	twelfth lunar month	Study	106
 zhi1	芝		sesame	Study	106
-jie4 / ji2	藉		by means of / in disorder	Study	106
+jie4 ji2	藉		by means of / in disorder	Study	106
 huang2	惶		frightened	Study	107
 ling2	玲		tinkling	Study	107
 lun2	纶	綸	fishing line	Study	107
@@ -3114,22 +3130,6 @@ wan3	婉		tactful	Study	109
 fen4	忿		indignant	Study	109
 sha1	砂		sand	Study	109
 dai4	殆		danger	Study	109
-gu3	谷	谷/穀	valley; grain	Book	26
-lin4	赁	賃	to rent	Study	96
-chong1	冲	沖	rush	Study	8
-hui4	汇	彙/匯	gather together/converge	Study	25
-zhu4	注	注/註	pour / record notes	Book	18
-gan1 / gan4	干	乾/幹	dry / work	Book	9
-zang1 / zang4	脏	髒/臟	dirty / internal organs	Book	28
-mi1	眯	瞇	squint	Study	80
-huo4	获	獲/穫	capture/harvest	Study	17
-hua2 / hua4	划	划/劃	to row / to plan	Book	29
-jin4 / jin3	尽	盡/儘	use up / to max extent	Study	12
-fa1 / fa4	发	發/髮	send out / hair	Book	10
-dang4	荡	蕩/盪	sway	Study	82
-fu4	复	復/複	repeat / complex	Book	29
-zhao2 / zhe	着	著	to catch / -ing	Book	13
-zhu4	著		write books	Study	35
 mian3	冕		crown	Study	110
 jia1	枷		yoke	Study	110
 du1	嘟		toot	Study	110
@@ -3170,7 +3170,7 @@ min3	皿		dish	Study	111
 zi1	孜		hardworking	Study	111
 gui1	圭		jade block	Study	111
 nie4	臬		standard	Study	111
-huo1 / huo4	豁		slit / open & clear	Study	112
+huo1 huo4	豁		slit / open & clear	Study	112
 nian3	撵	攆	expel	Study	112
 mu4	募		recruit	Study	112
 lun2	仑	侖	meditate	Study	112
@@ -3226,7 +3226,7 @@ dian1	癫	癲	insane	Study	114
 qian2	钳	鉗	pliers	Study	114
 wo1	蜗	蝸	snail	Study	114
 lan3	揽	攬	pull into one's arms	Study	114
-hang2 / keng1	吭		throat / utter a sound	Study	114
+hang2 keng1	吭		throat / utter a sound	Study	114
 jian4	饯	餞	farewell dinner	Study	114
 xie1	蝎		scorpion	Study	114
 sha1	鲨	鯊	shark	Study	114

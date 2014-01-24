@@ -106,7 +106,7 @@ public class Record implements Comparable {
     }
 
     public String toString() {
-        return /*order + "," +*/ pinyin + "\t" + chars + "\t" + english + "\t" + book + "\t" + chapter;
+        return /*order + "," +*/ pinyin + "\t" + chars + "\t" + trad + "\t" + english + "\t" + book + "\t" + chapter;
     }
 
     public String getChapter() {
