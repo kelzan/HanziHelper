@@ -108,6 +108,8 @@ public class CharApp extends JFrame {
         filterPanel = new FilterPanel(this);
 
 //        this.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
+//        this.setIconImage(new ImageIcon(getClass().getResource("C:/Users/Daddy/Documents/NetBeansProjects/HanziHelper/icon.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
         topPanel = new JPanel(new BorderLayout());
         topPanel.add(listPanel, BorderLayout.CENTER);
         this.getContentPane().removeAll();
@@ -341,6 +343,17 @@ public class CharApp extends JFrame {
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 convert();
+            }
+        });
+        
+        menuItem = new JMenuItem("Review", KeyEvent.VK_R);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Review Chars");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                popupReviewPanel();
             }
         });
 
@@ -579,6 +592,21 @@ public class CharApp extends JFrame {
         proper.setVerticalTextPosition(JLabel.VERTICAL);
         temp.add(proper);
         JOptionPane.showMessageDialog(this, temp, "About", JOptionPane.INFORMATION_MESSAGE, logo);
+    }
+
+    private void popupReviewPanel() {
+        record.setSelected(listPanel.getSelectedRows());
+        ReviewPanel review = new ReviewPanel();
+//        review.setOpaque(true);
+//        review.setVisible(true);
+        JFrame f = new JFrame("My Big Ol Frame");
+        f.setVisible(true);
+        f.setSize(500,500);
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        f.setContentPane(review);
+        
     }
 
     public ListPanel getListPanel() {
