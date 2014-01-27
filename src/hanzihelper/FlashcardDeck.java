@@ -31,6 +31,7 @@ import java.util.List;
 public class FlashcardDeck {
 
     int numRepeat = 2;
+    int numPenalty = 3;
     List<Record> flashcards = new LinkedList<Record>();
 
     int totalCards;
@@ -54,7 +55,24 @@ public class FlashcardDeck {
     }
 
     public void answerCorrect() {
+        totalCorrect++;
         currentCardOffset++;
+    }
+
+    public void answerWrong() {
+        Record wrongFlashcard = flashcards.get(currentCardOffset);
+        totalWrong++;
+        flashcards.subList(0, currentCardOffset + 1).clear();
+        for (int i = 0; i < numPenalty; i++) {
+            flashcards.add(wrongFlashcard);
+            totalCards++;
+        }
+        Collections.shuffle(flashcards);
+        currentCardOffset = 0;
+    }
+
+    public boolean hasNext() {
+        return (currentCardOffset < flashcards.size());
     }
 
     public String getChars() {
@@ -71,6 +89,10 @@ public class FlashcardDeck {
 
     public String getBookAndChapter() {
         return (flashcards.get(currentCardOffset).getChapterFormatted());
+    }
+
+    public String getCardCount() {
+        return (String.format("%02d/%02d", totalCorrect + totalWrong, totalCards));
     }
 
 }

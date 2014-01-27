@@ -37,6 +37,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         this.record = record;
         flashcards = new FlashcardDeck(record);
         initComponents();
+        setQuestionDisplay();
         setCardText();
     }
 
@@ -83,6 +84,11 @@ public class ReviewPanel extends javax.swing.JPanel {
         });
 
         wrongButton.setText("Wrong");
+        wrongButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wrongButtonActionPerformed(evt);
+            }
+        });
 
         correctButton.setText("Correct");
         correctButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,15 +161,26 @@ public class ReviewPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        frame.dispose();       // TODO add your handling code here:
+        setAnswerDisplay();
     }//GEN-LAST:event_showButtonActionPerformed
 
     private void correctButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correctButtonActionPerformed
         // TODO add your handling code here:
         flashcards.answerCorrect();
-        setCardText();
+        if (flashcards.hasNext()) {
+            setQuestionDisplay();
+            setCardText();
+        } else { // We're done here
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frame.dispose();
+        }
     }//GEN-LAST:event_correctButtonActionPerformed
+
+    private void wrongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wrongButtonActionPerformed
+        flashcards.answerWrong();
+        setQuestionDisplay();
+        setCardText();
+    }//GEN-LAST:event_wrongButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
@@ -182,5 +199,23 @@ public class ReviewPanel extends javax.swing.JPanel {
         pinyinLabel.setText(flashcards.getPinyin());
         defLabel.setText(flashcards.getDefinition());
         chapLabel.setText(flashcards.getBookAndChapter());
+    }
+
+    public void setQuestionDisplay() {
+        pinyinLabel.setVisible(false);
+        defLabel.setVisible(false);
+        chapLabel.setVisible(false);
+        showButton.setEnabled(true);
+        wrongButton.setEnabled(false);
+        correctButton.setEnabled(false);
+    }
+
+    public void setAnswerDisplay() {
+        pinyinLabel.setVisible(true);
+        defLabel.setVisible(true);
+        chapLabel.setVisible(true);
+        showButton.setEnabled(false);
+        wrongButton.setEnabled(true);
+        correctButton.setEnabled(true);
     }
 }
