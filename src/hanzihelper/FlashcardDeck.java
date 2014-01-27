@@ -92,7 +92,7 @@ public class FlashcardDeck {
     }
 
     public String getCardCount() {
-        return (String.format("%02d/%02d", totalCorrect + totalWrong, totalCards));
+        return (String.format("%d/%02d", totalCorrect + totalWrong + 1, totalCards));
     }
 
 }

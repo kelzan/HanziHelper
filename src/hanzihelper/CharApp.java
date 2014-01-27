@@ -597,16 +597,13 @@ public class CharApp extends JFrame {
     private void popupReviewPanel() {
         record.setSelected(listPanel.getSelectedRows());
         ReviewPanel review = new ReviewPanel(record);
-//        review.setOpaque(true);
-//        review.setVisible(true);
-        JFrame f = new JFrame("My Big Ol Frame");
+        JFrame f = new JFrame("Character Review - <book><chapter>");
         f.setVisible(true);
-        f.setSize(500, 500);
+        f.setSize(500, 400);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         f.setContentPane(review);
-
     }
 
     public ListPanel getListPanel() {
