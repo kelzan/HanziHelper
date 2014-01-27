@@ -214,60 +214,6 @@ public class CharApp extends JFrame {
             }
         });
 
-        menuItem = new JMenuItem("Excel XML",
-                KeyEvent.VK_E);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Export to Excel");
-        subMenu.add(menuItem);
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                exportExcel();
-            }
-        });
-
-        menuItem = new JMenuItem("Stroke Images",
-                KeyEvent.VK_I);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Export stroke order images");
-        subMenu.add(menuItem);
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                writeStrokeOrderImages();
-            }
-        });
-
-        menuItem = new JMenuItem("Description Images",
-                KeyEvent.VK_Z);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Export character info");
-        if (development) {
-            subMenu.add(menuItem);
-        }
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                writeZhongWenImages();
-            }
-        });
-
-        menuItem = new JMenuItem("Dragon Char",
-                KeyEvent.VK_D);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Export to dragon");
-        subMenu.add(menuItem);
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                exportDragon();
-            }
-        });
-
         menuItem = new JMenuItem("PlecoDict Flashcards",
                 KeyEvent.VK_P);
         menuItem.setBackground(COLOR_BG);
@@ -704,85 +650,6 @@ public class CharApp extends JFrame {
         }
     }
 
-    private void writeStrokeOrderImages() {
-        record.setSelected(listPanel.getSelectedRows());
-        final File rDir = selectFile("", "Image output dir", true, true);
-        if (rDir == null) {
-            return;
-        }
-        CharProps.getProperties().setProperty("last.path", rDir.getPath());
-        try {
-            int max = record.getRecords(false).size();
-            final JProgressBar bar = new JProgressBar(0, max);
-            bar.setStringPainted(true);
-            JPanel temp = new JPanel();
-            temp.add(bar);
-
-            final JDialog dialog = new JDialog(this, "Working", true);
-            dialog.add(temp);
-
-            new Thread() {
-                public void run() {
-                    try {
-                        ImageProcessor.makeImages(bar, rDir, record);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        showErrorMessage("Problem with export: " + e.getMessage());
-                    } finally {
-                        dialog.setVisible(false);
-                        dialog.dispose();
-                    }
-                }
-            }.start();
-            dialog.pack();
-            dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
-            dialog.setVisible(true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            showErrorMessage("Error: " + e.getMessage());
-        }
-    }
-
-    public void exportExcel() {
-        record.setSelected(listPanel.getSelectedRows());
-        final File rFile = selectFile(".xml", "Excel XML worksheet", false, true);
-        if (rFile != null) {
-            String path = rFile.getParentFile().getAbsolutePath();
-            CharProps.getProperties().setProperty("last.path", path);
-            try {
-                int max = record.getRecords(false).size();
-                final JProgressBar bar = new JProgressBar(0, max);
-                bar.setStringPainted(true);
-                JPanel temp = new JPanel();
-                temp.add(bar);
-
-                final JDialog dialog = new JDialog(this, "Working", true);
-                dialog.add(temp);
-
-                new Thread() {
-                    public void run() {
-                        try {
-                            ExcelExport.writeExcelXML(bar, record, rFile.getAbsolutePath());
-                        } catch (IOException e) {
-                            showErrorMessage("Problem with export: " + e.getMessage());
-                        } finally {
-                            dialog.setVisible(false);
-                            dialog.dispose();
-                        }
-                    }
-                }.start();
-                dialog.pack();
-                dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
-                dialog.setVisible(true);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                showErrorMessage("Problem with export: " + e.getMessage());
-            }
-        }
-    }
-
     public void exportSM() {
         record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".txt", "Tab delimited txt", false, true);
@@ -805,20 +672,6 @@ public class CharApp extends JFrame {
             CharProps.getProperties().setProperty("last.path", path);
             try {
                 SuperMemoQAExport.qaExport(record, rFile.getAbsolutePath());
-            } catch (Exception e) {
-                showErrorMessage("Problem with export: " + e.getMessage());
-            }
-        }
-    }
-
-    public void exportDragon() {
-        record.setSelected(listPanel.getSelectedRows());
-        File rFile = selectFile(".pdb", "Dragon data files", false, true);
-        if (rFile != null) {
-            String path = rFile.getParentFile().getAbsolutePath();
-            CharProps.getProperties().setProperty("last.path", path);
-            try {
-                RecordExport.dragonExport(record, rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }

@@ -29,8 +29,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import palmos.MakePDB;
-
 /**
  * This class separates the logic for exporting to a couple of other formats. SuperMemo is for the
  * Palm implementation of the SuperMemo flashcard software (sadly, not open source) by MapleTop
@@ -39,13 +37,6 @@ import palmos.MakePDB;
  */
 public class RecordExport {
 
-//    private static String[] toneColor = {
-//        "#000000",
-//        "#ff0000",
-//        "#ffaa00",
-//        "#00aa00",
-//        "#0000ff"
-//    };
     /**
      * Tab-delimted records with GB-encoded characters. The output needs to go through the
      * SMCONV.exe util to make a PDB. Sorry... I'm working on an open-source replacement for that
@@ -98,25 +89,6 @@ public class RecordExport {
         return sb.toString();
     }
 
-    // String language, String charset, String wordString, String
-    // glyphPath, String dbname, File wordFile
-    public static void dragonExport(CharRecord record, String filename) {
-        int i = filename.lastIndexOf("\\");
-        int j = filename.lastIndexOf("/");
-        int k = filename.lastIndexOf(".");
-        String dbName = filename.substring(Math.max(i, j) + 1, k);
-        String wordString = getDragonWords(record);
-        try {
-            new MakePDB().buildPDB("en", "simplified", wordString,
-                    "/java/dragon/dragon-data/characters",
-                    dbName, null, filename);
-        } catch (Exception e) {
-            e.printStackTrace(System.err);
-            CharApp.getInstance().showErrorMessage("Couldn't save PDB file: "
-                    + e.getMessage());
-        }
-    }
-
     public static void textExport(CharRecord rec, String filename) throws IOException {
         Collection c = rec.getRecords(false);
         BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "UTF-8"));
@@ -165,92 +137,15 @@ public class RecordExport {
             br.write(record.getChars() + "\t"
                     + record.getTrad() + "\t"
                     + record.getPinyinColorized() + "\t"
-                    //                    + getAnkiPinyin(record.getPinyin()) + "\t"
                     + record.getEnglish() + "\t"
                     + record.getChapterFormatted() + "\t"
-                    //                    + getAnkiChapter(record.getBook(), record.getChapter()) + "\t"
                     + record.getSoundFile() + "\t\t\t"
-                    //                   + getAnkiSound(record.getPinyin()) + "\t\t\t"
                     + record.getBook() + "_" + String.format("%02d", Integer.parseInt(record.getChapter())) + "\n");
         }
         br.flush();
         br.close();
     }
 
-//    private static String getAnkiChapter(String book, String chapter) {
-//        StringBuilder ankiChapter = new StringBuilder();
-//
-//        switch (book) {
-//            case "Book":
-//                ankiChapter.append("Book Chapter ");
-//                break;
-//            case "Study":
-//                ankiChapter.append("Character Study ");
-//                break;
-//            default:
-//                ankiChapter.append(book + " ");
-//        }
-//        ankiChapter.append(String.format("%02d", Integer.parseInt(chapter)));
-//        return ankiChapter.toString();
-//    }
-//
-//    private static String getAnkiPinyin(String pinyin) {
-//        StringBuilder ankiPinyin = new StringBuilder();
-//        String[] syllables = PinyinUtil.getSyllables(pinyin);
-//        int curTone;
-//
-//        for (int i = 0; i < syllables.length; i++) {
-//            if (i > 0) {
-//                ankiPinyin.append(" ");
-//            }
-//            curTone = getTone(syllables[i]);
-//            if (curTone == 0) {
-//                ankiPinyin.append(syllables[i]);
-//            } else {
-//                ankiPinyin.append("<span style = \"color:");
-//                ankiPinyin.append(toneColor[curTone]);
-//                ankiPinyin.append("\">");
-//                ankiPinyin.append(PinyinUtil.toUnicode(syllables[i]));
-//                ankiPinyin.append("</span>");
-//            }
-//        }
-//        return ankiPinyin.toString();
-//    }
-//
-//    private static String getAnkiSound(String pinyin) {
-//        StringBuilder ankiSound = new StringBuilder();
-//        String[] syllables = PinyinUtil.getSyllables(pinyin);
-//
-//        for (int i = 0; i < syllables.length; i++) {
-//            if (PinyinUtil.isValidSyllable(syllables[i].toLowerCase())) {
-//                ankiSound.append("[sound:");
-//                ankiSound.append(syllables[i].toLowerCase());
-//                ankiSound.append(".mp3]");
-//            }
-//        }
-//        return ankiSound.toString();
-//    }
-//
-//    private static int getTone(String pinyin) {
-//        int tone;
-//        switch (pinyin.substring(pinyin.length() - 1)) {
-//            case "1":
-//                tone = 1;
-//                break;
-//            case "2":
-//                tone = 2;
-//                break;
-//            case "3":
-//                tone = 3;
-//                break;
-//            case "4":
-//                tone = 4;
-//                break;
-//            default:
-//                tone = 0;
-//        }
-//        return tone;
-//    }
     /**
      * Exports to VTrain - side one is Chinese and pinyin, side two is English. Delimiters are the
      * default =, |

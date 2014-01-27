@@ -95,7 +95,8 @@ public class ListPanel extends JPanel {
                         Point origin = e.getPoint();
                         int row = table.rowAtPoint(origin);
                         if (row > -1) {
-                            showStrokeOrder("" + table.getModel().getValueAt(row, 2));
+                            // Used to show stroke order, but this feature is deprecated.
+//                            showStrokeOrder("" + table.getModel().getValueAt(row, 2));
                         }
                     } else if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                         CharApp.getInstance().editRecord();
@@ -123,35 +124,34 @@ public class ListPanel extends JPanel {
         return ((RecordTableModel) table.getModel()).getFilter();
     }
 
-    public void showStrokeOrder(String chars) {
-        JPanel comp = new JPanel(new GridLayout(1, chars.length()));
-
-        JDialog dialog = new JDialog(CharApp.getFrames()[0], false);
-        int dialogWidth = 0;
-        int dialogHeight = 0;
-        for (int i = 0; i < chars.length(); i++) {
-            char ch = chars.charAt(i);
-            try {
-                StrokeOrderPanel pnl = new StrokeOrderPanel(ch);
-                comp.add(pnl);
-                dialogWidth += 150;
-                dialogHeight = Math.max(150, dialogHeight);
-            } catch (Throwable t) {
-                String code = Converter.convertToGBHexString("" + ch);
-                comp.add(new ImagePanel(code));
-                dialogWidth += 56;
-                dialogHeight = Math.max(dialogHeight, 90);
-            }
-        }
-
-        dialog.setSize(dialogWidth, dialogHeight);
-        // Java 1.5
-//    dialog.add(comp);
-        dialog.getContentPane().add(comp);
-        dialog.setLocation((int) CharApp.getFrames()[0].getLocation().getX() + 50, (int) CharApp.getFrames()[0].getLocation().getY() + 50);
-        dialog.setVisible(true);
-    }
-
+//    public void showStrokeOrder(String chars) {
+//        JPanel comp = new JPanel(new GridLayout(1, chars.length()));
+//
+//        JDialog dialog = new JDialog(CharApp.getFrames()[0], false);
+//        int dialogWidth = 0;
+//        int dialogHeight = 0;
+//        for (int i = 0; i < chars.length(); i++) {
+//            char ch = chars.charAt(i);
+//            try {
+//                StrokeOrderPanel pnl = new StrokeOrderPanel(ch);
+//                comp.add(pnl);
+//                dialogWidth += 150;
+//                dialogHeight = Math.max(150, dialogHeight);
+//            } catch (Throwable t) {
+//                String code = Converter.convertToGBHexString("" + ch);
+//                comp.add(new ImagePanel(code));
+//                dialogWidth += 56;
+//                dialogHeight = Math.max(dialogHeight, 90);
+//            }
+//        }
+//
+//        dialog.setSize(dialogWidth, dialogHeight);
+//        // Java 1.5
+////    dialog.add(comp);
+//        dialog.getContentPane().add(comp);
+//        dialog.setLocation((int) CharApp.getFrames()[0].getLocation().getX() + 50, (int) CharApp.getFrames()[0].getLocation().getY() + 50);
+//        dialog.setVisible(true);
+//    }
     static class RecordTableModel extends AbstractTableModel {
 
         private CharRecord records;
