@@ -26,7 +26,14 @@ import java.util.Set;
  */
 public class Record implements Comparable {
 
-    static Set books = new HashSet(3);
+    private static String[] toneColor = {
+        "#000000",
+        "#ff0000",
+        "#ffaa00",
+        "#00aa00",
+        "#0000ff"
+    };
+    //static Set books = new HashSet(3);
     private int order;
     private String pinyin;
     private String chars;
@@ -136,4 +143,80 @@ public class Record implements Comparable {
     public int getLength() {
         return chars.length();
     }
+
+    public String getChapterFormatted() {
+        StringBuilder chapString = new StringBuilder();
+
+        switch (book) {
+            case "Book":
+                chapString.append("Book Chapter ");
+                break;
+            case "Study":
+                chapString.append("Character Study ");
+                break;
+            default:
+                chapString.append(book + " ");
+        }
+        chapString.append(String.format("%02d", Integer.parseInt(chapter)));
+        return chapString.toString();
+    }
+
+    public String getPinyinColorized() {
+        StringBuilder ankiPinyin = new StringBuilder();
+        String[] syllables = PinyinUtil.getSyllables(pinyin);
+        int curTone;
+
+        for (int i = 0; i < syllables.length; i++) {
+            if (i > 0) {
+                ankiPinyin.append(" ");
+            }
+            curTone = getTone(syllables[i]);
+            if (curTone == 0) {
+                ankiPinyin.append(syllables[i]);
+            } else {
+                ankiPinyin.append("<span style = \"color:");
+                ankiPinyin.append(toneColor[curTone]);
+                ankiPinyin.append("\">");
+                ankiPinyin.append(PinyinUtil.toUnicode(syllables[i]));
+                ankiPinyin.append("</span>");
+            }
+        }
+        return ankiPinyin.toString();
+    }
+
+    public String getSoundFile() {
+        StringBuilder ankiSound = new StringBuilder();
+        String[] syllables = PinyinUtil.getSyllables(pinyin);
+
+        for (int i = 0; i < syllables.length; i++) {
+            if (PinyinUtil.isValidSyllable(syllables[i].toLowerCase())) {
+                ankiSound.append("[sound:");
+                ankiSound.append(syllables[i].toLowerCase());
+                ankiSound.append(".mp3]");
+            }
+        }
+        return ankiSound.toString();
+    }
+
+    private static int getTone(String pinyinString) {
+        int tone;
+        switch (pinyinString.substring(pinyinString.length() - 1)) {
+            case "1":
+                tone = 1;
+                break;
+            case "2":
+                tone = 2;
+                break;
+            case "3":
+                tone = 3;
+                break;
+            case "4":
+                tone = 4;
+                break;
+            default:
+                tone = 0;
+        }
+        return tone;
+    }
+
 }

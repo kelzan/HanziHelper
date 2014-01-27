@@ -345,7 +345,7 @@ public class CharApp extends JFrame {
                 convert();
             }
         });
-        
+
         menuItem = new JMenuItem("Review", KeyEvent.VK_R);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
@@ -596,17 +596,17 @@ public class CharApp extends JFrame {
 
     private void popupReviewPanel() {
         record.setSelected(listPanel.getSelectedRows());
-        ReviewPanel review = new ReviewPanel();
+        ReviewPanel review = new ReviewPanel(record);
 //        review.setOpaque(true);
 //        review.setVisible(true);
         JFrame f = new JFrame("My Big Ol Frame");
         f.setVisible(true);
-        f.setSize(500,500);
+        f.setSize(500, 500);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         f.setContentPane(review);
-        
+
     }
 
     public ListPanel getListPanel() {
