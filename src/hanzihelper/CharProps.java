@@ -65,6 +65,20 @@ public class CharProps {
         }
     }
 
+    public static boolean getBooleanProperty(String name, boolean defaultVal) {
+        if (getProperty(name) != null) {
+            try {
+                boolean val = Boolean.parseBoolean(getProperty(name));
+                return val;
+            } catch (Exception e) {
+                System.err.println("Invalid int property: " + name);
+                return defaultVal;
+            }
+        } else {
+            getProperties().setProperty(name, defaultVal + "");
+            return defaultVal;
+        }
+    }
     /**
      * Returns a property from the store, or the default if it doesn't exist. Saves on checking for
      * nulls, etc. This method also converts the property to a double.

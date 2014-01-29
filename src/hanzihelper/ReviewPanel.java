@@ -27,15 +27,13 @@ import javax.swing.SwingUtilities;
  */
 public class ReviewPanel extends javax.swing.JPanel {
 
-    CharRecord record;
     FlashcardDeck flashcards;
 
     /**
      * Creates new form ReviewPanel
      */
-    public ReviewPanel(CharRecord record) {
-        this.record = record;
-        flashcards = new FlashcardDeck(record);
+    public ReviewPanel(CharRecord record, ReviewOptions reviewOptions) {
+        flashcards = new FlashcardDeck(record, reviewOptions);
         initComponents();
         setQuestionDisplay();
         setCardText();
@@ -60,6 +58,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         wrongButton = new javax.swing.JButton();
         correctButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(400, 360));
 
         reviewChar.setFont(new java.awt.Font("SimSun", 0, 100)); // NOI18N
@@ -73,9 +72,11 @@ public class ReviewPanel extends javax.swing.JPanel {
         chapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         chapLabel.setText("Book Chapter X");
 
-        defLabel.setFont(new java.awt.Font("Arial Unicode MS", 0, 14)); // NOI18N
+        defLabel.setFont(new java.awt.Font("Arial Unicode MS", 0, 16)); // NOI18N
         defLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         defLabel.setText("Definition");
+
+        buttonPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         countLabel.setText("01/100");
         countLabel.setAlignmentX(0.5F);
@@ -105,14 +106,14 @@ public class ReviewPanel extends javax.swing.JPanel {
         buttonPanel.setLayout(buttonPanelLayout);
         buttonPanelLayout.setHorizontalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(wrongButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(correctButton)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(countLabel)
@@ -141,14 +142,14 @@ public class ReviewPanel extends javax.swing.JPanel {
                         .addComponent(jSeparator1)
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 40, Short.MAX_VALUE)
+                        .addGap(0, 58, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(chapLabel)
                             .addComponent(defLabel)
                             .addComponent(pinyinLabel)
                             .addComponent(reviewChar)
                             .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(50, Short.MAX_VALUE))))
+                        .addContainerGap(66, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +164,7 @@ public class ReviewPanel extends javax.swing.JPanel {
                 .addComponent(defLabel)
                 .addGap(18, 18, 18)
                 .addComponent(chapLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -171,6 +172,7 @@ public class ReviewPanel extends javax.swing.JPanel {
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
         setAnswerDisplay();
+        flashcards.playSound();
     }//GEN-LAST:event_showButtonActionPerformed
 
     private void correctButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correctButtonActionPerformed
@@ -205,6 +207,7 @@ public class ReviewPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void setCardText() {
+        flashcards.prepareSound();
         reviewChar.setText(flashcards.getChars());
         pinyinLabel.setText(flashcards.getPinyin());
         defLabel.setText(flashcards.getDefinition());

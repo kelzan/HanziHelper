@@ -40,7 +40,6 @@ public class CharApp extends JFrame {
     public static final boolean development = false;
     public static Color COLOR_BG = new Color(245, 240, 240);
     public static Color COLOR_BUTTON = new Color(250, 250, 250);
-    public static String cache = "./cache";
     public static String RECORD_FILE = "record.rec";
     private JMenuBar menuBar;
     private JMenu menu;
@@ -57,7 +56,6 @@ public class CharApp extends JFrame {
         super("Hanzi Helper");
         instance = this;
         recFile = CharProps.getStringProperty("record.file", RECORD_FILE);
-        cache = CharProps.getStringProperty("cache.dir", cache);
         init();
         this.setLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2 - this.getWidth() / 2),
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2 - this.getHeight() / 2));
@@ -107,8 +105,6 @@ public class CharApp extends JFrame {
         listPanel = new ListPanel(record);
         filterPanel = new FilterPanel(this);
 
-//        this.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
-//        this.setIconImage(new ImageIcon(getClass().getResource("C:/Users/Daddy/Documents/NetBeansProjects/HanziHelper/icon.png")).getImage());
         this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
         topPanel = new JPanel(new BorderLayout());
         topPanel.add(listPanel, BorderLayout.CENTER);
@@ -495,7 +491,7 @@ public class CharApp extends JFrame {
         StringBuffer sb = new StringBuffer();
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/help.html")));
+            BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("help.html")));
             String line = null;
             while ((line = br.readLine()) != null) {
                 sb.append(line + "\n");
@@ -526,15 +522,15 @@ public class CharApp extends JFrame {
         record.setSelected(listPanel.getSelectedRows());
         JPanel temp = new JPanel(new FlowLayout());
         temp.setBackground(new Color(204, 204, 204));
-        ImageIcon logo = new ImageIcon(getClass().getResource("/logo.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("logo.png"));
         JLabel proper = new JLabel("<html>"
                 + "<div align=\"center\"><font size=\"8\" color=\"red\">Hanzi Helper</font><p>"
-                + "<div align=\"center\"><b>Version "
+                + "<div align=\"center\"><b>Kelzan Version "
                 + VERSION + "</b></div>"
-                + "<p><br><b>http://hanzihelper.sourceforge.net</b><p>"
-                + "<br>coljac@users.sourceforge.net"
-                + "<p><br><font size=\"2\" color=\"blue\">Thanks to SF.net and the Dragon-Chars <br>"
-                + "project team</font></html>");
+                + "<p><br><b>http://github.com/kelzan/HanziHelper</b><p>"
+                + "<br>Original: <b>http://hanzihelper.sourceforge.net</b>"
+                + "<p><br><font size=\"2\" color=\"blue\">Thanks coljac@users.sourceforge.net for the <br>"
+                + "original source code</font></html>");
         proper.setVerticalTextPosition(JLabel.VERTICAL);
         temp.add(proper);
         JOptionPane.showMessageDialog(this, temp, "About", JOptionPane.INFORMATION_MESSAGE, logo);
@@ -542,14 +538,23 @@ public class CharApp extends JFrame {
 
     private void popupReviewPanel() {
         record.setSelected(listPanel.getSelectedRows());
-        ReviewPanel review = new ReviewPanel(record);
-        JFrame f = new JFrame("Character Review - <book><chapter>");
-        f.setVisible(true);
+        ReviewOptions reviewOptions = new ReviewOptions();
+        reviewOptions.getDefaults();
+
+        ReviewOptionsPanel reviewOptionsPanel = new ReviewOptionsPanel(reviewOptions);
+        JDialog dialog = new JDialog(this, Dialog.ModalityType.APPLICATION_MODAL);
+        dialog.add(reviewOptionsPanel);
+        dialog.setSize(250,200);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+
+        ReviewPanel review = new ReviewPanel(record, reviewOptions);
+        JFrame f = new JFrame("Character Review - " + getFilterPanel().getBook() + " " + getFilterPanel().getChapters());
         f.setSize(500, 400);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
         f.setContentPane(review);
+        f.setVisible(true);
     }
 
     public ListPanel getListPanel() {
@@ -613,43 +618,42 @@ public class CharApp extends JFrame {
         }
     }
 
-    private void writeZhongWenImages() {
-        record.setSelected(listPanel.getSelectedRows());
-//    final File rDir = selectFile("", "Image output dir", true);
-//    if (rDir == null) return;
-        try {
-            int max = record.getRecords(false).size();
-            final JProgressBar bar = new JProgressBar(0, max);
-            bar.setStringPainted(true);
-            JPanel temp = new JPanel();
-            temp.add(bar);
-
-            final JDialog dialog = new JDialog(this, "Working", true);
-            dialog.add(temp);
-
-            new Thread() {
-                public void run() {
-                    try {
-                        ZhongwenCom.fetchImages(bar, record);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        showErrorMessage("Problem with export: " + e.getMessage());
-                    } finally {
-                        dialog.setVisible(false);
-                        dialog.dispose();
-                    }
-                }
-            }.start();
-            dialog.pack();
-            dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
-            dialog.setVisible(true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            showErrorMessage("Error: " + e.getMessage());
-        }
-    }
-
+//    private void writeZhongWenImages() {
+//        record.setSelected(listPanel.getSelectedRows());
+////    final File rDir = selectFile("", "Image output dir", true);
+////    if (rDir == null) return;
+//        try {
+//            int max = record.getRecords(false).size();
+//            final JProgressBar bar = new JProgressBar(0, max);
+//            bar.setStringPainted(true);
+//            JPanel temp = new JPanel();
+//            temp.add(bar);
+//
+//            final JDialog dialog = new JDialog(this, "Working", true);
+//            dialog.add(temp);
+//
+//            new Thread() {
+//                public void run() {
+//                    try {
+//                        ZhongwenCom.fetchImages(bar, record);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                        showErrorMessage("Problem with export: " + e.getMessage());
+//                    } finally {
+//                        dialog.setVisible(false);
+//                        dialog.dispose();
+//                    }
+//                }
+//            }.start();
+//            dialog.pack();
+//            dialog.setLocation(((int) (this.getLocation().getX() + 300)), ((int) (this.getLocation().getY() + 300)));
+//            dialog.setVisible(true);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            showErrorMessage("Error: " + e.getMessage());
+//        }
+//    }
     public void exportSM() {
         record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".txt", "Tab delimited txt", false, true);
