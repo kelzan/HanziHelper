@@ -24,4 +24,36 @@ package hanzihelper;
  */
 public class Flashcard {
 
+    public Flashcard(Record record, boolean isTraditional) {
+        this.record = record;
+        this.isTraditional = isTraditional;
+    }
+    Record record;
+    boolean isTraditional;
+
+    public String getChars() {
+        return (isTraditional ? record.getTrad() : record.getChars());
+    }
+
+    public String getAlternateChars() {
+        return (isTraditional ? "Simplified: " + record.getChars()
+                : record.hasTrad() ? "Traditional:" + record.getTrad() : "");
+    }
+
+    public String getPinyinColorized() {
+        return ("<html>" + record.getPinyinColorized() + "</html>");
+    }
+
+    public String getPinyin() {
+        return (record.getPinyin());
+    }
+
+    public String getDefinition() {
+        return (record.getEnglish());
+    }
+
+    public String getBookAndChapter() {
+        return (record.getChapterFormatted());
+    }
+
 }

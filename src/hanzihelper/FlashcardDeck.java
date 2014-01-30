@@ -33,7 +33,7 @@ import javax.media.format.AudioFormat;
  */
 public class FlashcardDeck {
 
-    List<Record> flashcards = new LinkedList<Record>();
+    List<Flashcard> flashcards = new LinkedList<Flashcard>();
 
     int totalCards;
     int totalUnique;
@@ -51,10 +51,20 @@ public class FlashcardDeck {
         Iterator iterator = c.iterator();
         while (iterator.hasNext()) {
             Record record = (Record) iterator.next();
+            Flashcard newTradCard = new Flashcard(record, true);
+            Flashcard newSimpCard = new Flashcard(record, false);
             totalUnique++;
             for (int i = 0; i < reviewOptions.repeatPerChar; i++) {
-                flashcards.add(record);
-                totalCards++;
+                if (record.hasTrad()) {
+                    if (reviewOptions.type != ReviewOptions.ReviewType.SIMPLIFIED) {
+                        addCard(newTradCard);
+                    }
+                    if (reviewOptions.type != ReviewOptions.ReviewType.TRADITIONAL) {
+                        addCard(newSimpCard);
+                    }
+                } else {
+                    addCard(newSimpCard);
+                }
             }
         }
         Collections.shuffle(flashcards);
@@ -64,13 +74,18 @@ public class FlashcardDeck {
 
     }
 
+    private void addCard(Flashcard newCard) {
+        flashcards.add(newCard);
+        totalCards++;
+    }
+
     public void answerCorrect() {
         totalCorrect++;
         currentCardOffset++;
     }
 
     public void answerWrong() {
-        Record wrongFlashcard = flashcards.get(currentCardOffset);
+        Flashcard wrongFlashcard = flashcards.get(currentCardOffset);
         totalWrong++;
         flashcards.subList(0, currentCardOffset + 1).clear();
         for (int i = 0; i < reviewOptions.missPenalty; i++) {
@@ -89,16 +104,16 @@ public class FlashcardDeck {
         return (flashcards.get(currentCardOffset).getChars());
     }
 
-    public String getPinyin() {
-        return ("<html>" + flashcards.get(currentCardOffset).getPinyinColorized() + "</html>");
+    public String getPinyinColorized() {
+        return (flashcards.get(currentCardOffset).getPinyinColorized());
     }
 
     public String getDefinition() {
-        return (flashcards.get(currentCardOffset).getEnglish());
+        return (flashcards.get(currentCardOffset).getDefinition());
     }
 
     public String getBookAndChapter() {
-        return (flashcards.get(currentCardOffset).getChapterFormatted());
+        return (flashcards.get(currentCardOffset).getBookAndChapter());
     }
 
     public String getCardCount() {

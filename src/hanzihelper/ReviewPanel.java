@@ -209,7 +209,7 @@ public class ReviewPanel extends javax.swing.JPanel {
     public void setCardText() {
         flashcards.prepareSound();
         reviewChar.setText(flashcards.getChars());
-        pinyinLabel.setText(flashcards.getPinyin());
+        pinyinLabel.setText(flashcards.getPinyinColorized());
         defLabel.setText(flashcards.getDefinition());
         chapLabel.setText(flashcards.getBookAndChapter());
         countLabel.setText(flashcards.getCardCount());

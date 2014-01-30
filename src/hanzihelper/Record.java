@@ -96,6 +96,10 @@ public class Record implements Comparable {
         return trad;
     }
 
+    public boolean hasTrad() {
+        return (!(trad.equals("")) || (trad == null));
+    }
+
     public void setTrad(String trad) {
         this.trad = trad;
     }
