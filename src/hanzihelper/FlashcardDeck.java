@@ -106,14 +106,12 @@ public class FlashcardDeck {
     }
 
     /**
-     * Initializes the player for the pinyin sound file, if we are configured
-     * to use sound.
-     * This will assume that everything in the 'pinyin' field up to the first
-     * space is a valid pinyin syllable (ascii numerical format). This should
-     * probably use PinyinUtil once that gets more robust.
-     * This should also be enhanced to do more than one syllable. I'm still not
-     * sure how to chain sounds to play end-to-end.
-     * If a sound file is not found that matches, this will simply return.
+     * Initializes the player for the pinyin sound file, if we are configured to use sound. This
+     * will assume that everything in the 'pinyin' field up to the first space is a valid pinyin
+     * syllable (ascii numerical format). This should probably use PinyinUtil once that gets more
+     * robust. This should also be enhanced to do more than one syllable. I'm still not sure how to
+     * chain sounds to play end-to-end. If a sound file is not found that matches, this will simply
+     * return.
      */
     public void prepareSound() {
         if (!reviewOptions.useSound) {
@@ -122,6 +120,7 @@ public class FlashcardDeck {
         String[] syllables = flashcards.get(currentCardOffset).getPinyin().split(" ");
         String pinyinFile = "sound/" + syllables[0] + ".mp3";
         URL url = getClass().getResource(pinyinFile);
+        player = null;
         if (url != null) {
             //          System.out.println("Found " + pinyinFile);
             try {
@@ -135,7 +134,7 @@ public class FlashcardDeck {
     }
 
     public void playSound() {
-        if (reviewOptions.useSound) {
+        if ((reviewOptions.useSound) && (player != null)) {
             try {
                 player.start();
             } catch (Exception ex) {

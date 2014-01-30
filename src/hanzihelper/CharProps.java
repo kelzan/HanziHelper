@@ -79,12 +79,13 @@ public class CharProps {
             return defaultVal;
         }
     }
+
     /**
      * Returns a property from the store, or the default if it doesn't exist. Saves on checking for
      * nulls, etc. This method also converts the property to a double.
      *
      * @param name       - the property name
-     * @param defaultVal - value to be retured if property doesn't exist
+     * @param defaultVal - value to be returned if property doesn't exist
      * @return - the value from the Properties store, or defaultVal if no found
      */
     public static double getDoubleProperty(String name, double defaultVal) {
@@ -121,8 +122,8 @@ public class CharProps {
      */
     public static void storeProps() {
         try {
-            BufferedOutputStream bos =
-                    new BufferedOutputStream(new FileOutputStream("hanzihelper.properties"));
+            BufferedOutputStream bos
+                    = new BufferedOutputStream(new FileOutputStream("hanzihelper.properties"));
             properties.store(bos, "Properties for Hanzi Practice application");
             bos.flush();
             bos.close();

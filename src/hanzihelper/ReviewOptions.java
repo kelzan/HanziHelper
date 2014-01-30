@@ -24,14 +24,21 @@ package hanzihelper;
  */
 public class ReviewOptions {
 
+    public enum ReviewType {
+
+        BOTH, SIMPLIFIED, TRADITIONAL;
+    }
+
     int repeatPerChar;
     int missPenalty;
     boolean useSound;
+    ReviewType type = ReviewType.BOTH;
 
     public void getDefaults() {
         repeatPerChar = CharProps.getIntProperty("review.repeat", 2);
         missPenalty = CharProps.getIntProperty("review.penalty", 3);
         useSound = CharProps.getBooleanProperty("review.sound", true);
+        type = ReviewType.valueOf(CharProps.getProperty("review.type"));
     }
 
     public void setDefaults() {
@@ -41,5 +48,6 @@ public class ReviewOptions {
         CharProps.getProperties().setProperty("review.repeat", repeatPerChar + "");
         CharProps.getProperties().setProperty("review.penalty", missPenalty + "");
         CharProps.getProperties().setProperty("review.sound", useSound + "");
+        CharProps.getProperties().setProperty("review.type", type.name());
     }
 }
