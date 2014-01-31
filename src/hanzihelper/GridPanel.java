@@ -29,9 +29,8 @@ import java.util.*;
 import java.util.List;
 
 /**
- * This component renders the characters in a grid for copying and practice.
- * It's this component that gets sent to the printer. It's complicated and
- * messy.
+ * This component renders the characters in a grid for copying and practice. It's this component
+ * that gets sent to the printer. It's complicated and messy.
  */
 public class GridPanel extends JPanel implements Printable {
 
@@ -55,9 +54,11 @@ public class GridPanel extends JPanel implements Printable {
     //private Color guidesColor1 = Color.gray;
     //private Color guidesColor2 = Color.lightGray;
     //private Color boxColor = Color.darkGray;
-    private Color guidesColor1 = new Color(180,180,180);
-    private Color guidesColor2 = new Color(230,230,230);
-    private Color boxColor = new Color(100,100,100);
+    private Color guidesColor1 = new Color(180, 180, 180);
+    private Color guidesColor2 = new Color(230, 230, 230);
+    private Color boxColor = new Color(100, 100, 100);
+    private String title1;
+    private String title2;
 
     public GridPanel(PrintMode printMode) {
         this.printMode = printMode;
@@ -96,11 +97,12 @@ public class GridPanel extends JPanel implements Printable {
         //if (guidesColorString.equalsIgnoreCase("lightgray")) {
         //    guidesColor1 = Color.lightGray;
         //}
-
         this.setPreferredSize(preferredSize);
 
         calcPages((int) (getPreferredSize().getWidth() - (2 * margins * anInch) - 2 * padding),
                 (int) (getPreferredSize().getHeight() - (2 * margins * anInch) - 2 * padding));
+
+        setTitle();
     }
 
     public void paint(Graphics g) {
@@ -155,6 +157,9 @@ public class GridPanel extends JPanel implements Printable {
         int boxesDown = h / boxH;
         int dx = w % boxW;
         int dy = h % boxH;
+
+        // Temporary hack to limit rows of characters
+        boxesDown = 10;
 
         pages = calcPages(width, height);
         if (currentPageIndex > pages - 1) {
@@ -361,12 +366,11 @@ public class GridPanel extends JPanel implements Printable {
     }
 
     /**
-     * Since the boxes to draw in need to be a constant size, the number of
-     * boxes and hence the number of pages changes and needs to be recalced,
-     * especially at print time.
+     * Since the boxes to draw in need to be a constant size, the number of boxes and hence the
+     * number of pages changes and needs to be recalced, especially at print time.
      *
      * @param height Drawable area height
-     * @param width Drawable area width
+     * @param width  Drawable area width
      */
     private int calcPages(int width, int height) {
         //int x1 = 0;
@@ -412,8 +416,10 @@ public class GridPanel extends JPanel implements Printable {
 // Draw a box around it
 //    g.drawRect(x, y, width, height);
 
-        String headerString1 = "Chinese Character Practice: " + df.format(new Date());
-        String headerString2 = "Page " + currentPage + "/" + pages;
+//        String headerString1 = "Chinese Character Practice: " + df.format(new Date());
+//        String headerString2 = "Page " + currentPage + "/" + pages;
+        String headerString1 = title1;
+        String headerString2 = title2 + "Page " + currentPage + "/" + pages;
         g.setFont(headerFont);
         g.setColor(Color.black);
 
@@ -556,6 +562,31 @@ public class GridPanel extends JPanel implements Printable {
 
     public void setGridLines(boolean gridLines) {
         this.gridLines = gridLines;
+    }
+
+    private void setTitle() {
+        String book = CharApp.getInstance().filterPanel.getBook();
+        String chapter = CharApp.getInstance().filterPanel.getChapters();
+        StringBuilder titleBuilder = new StringBuilder();
+        switch (book) {
+            case "Book":
+                titleBuilder.append("Book Chapter");
+                break;
+            case "Study":
+                titleBuilder.append("Character Study");
+                break;
+            case "":
+                titleBuilder.append("All Characters");
+            default:
+                titleBuilder.append(book);
+        }
+        if (!chapter.equals("")) {
+            titleBuilder.append(" " + chapter);
+        }
+        titleBuilder.append(", ");
+
+        title2 = titleBuilder.toString();
+        title1 = ("Chinese Character Practice: " + df.format(new Date()));
     }
 
     private PrintableRecord getPrintable(Record record, int charIndex, boolean last) {

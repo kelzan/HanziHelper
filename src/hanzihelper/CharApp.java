@@ -49,7 +49,7 @@ public class CharApp extends JFrame {
     private static CharApp instance;
     private JPanel topPanel;
     boolean showFilter = false;
-    private FilterPanel filterPanel;
+    public FilterPanel filterPanel;
     private String recFile;
 
     public CharApp() throws HeadlessException {
