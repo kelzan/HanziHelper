@@ -544,17 +544,43 @@ public class CharApp extends JFrame {
         ReviewOptionsPanel reviewOptionsPanel = new ReviewOptionsPanel(reviewOptions);
         JDialog dialog = new JDialog(this, Dialog.ModalityType.APPLICATION_MODAL);
         dialog.add(reviewOptionsPanel);
-        dialog.setSize(250,200);
+        dialog.setSize(275, 200);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
 
         ReviewPanel review = new ReviewPanel(record, reviewOptions);
-        JFrame f = new JFrame("Character Review - " + getFilterPanel().getBook() + " " + getFilterPanel().getChapters());
-        f.setSize(500, 400);
+//        JFrame f = new JFrame("Character Review - " + getFilterPanel().getBook() + " " + getFilterPanel().getChapters());
+        JFrame f = new JFrame(getReviewTitle(reviewOptions));
+        f.setSize(500, 500);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setContentPane(review);
         f.setVisible(true);
+    }
+
+    private String getReviewTitle(ReviewOptions reviewOptions) {
+        StringBuilder titleString = new StringBuilder("Character Review");
+
+        if (reviewOptions.type == ReviewOptions.ReviewType.SIMPLIFIED) {
+            titleString.append(" (Simplified)");
+        } else if (reviewOptions.type == ReviewOptions.ReviewType.TRADITIONAL) {
+            titleString.append(" (Traditional)");
+        }
+        titleString.append(" - ");
+        if (filterPanel.getBook().equals("")) {
+            if (filterPanel.getChapters().equals("")) {
+                titleString.append("All Characters");
+            } else {
+                titleString.append(filterPanel.getChapters());
+            }
+        } else {
+            if (filterPanel.getChapters().equals("")) {
+                titleString.append("All " + filterPanel.getBook());
+            } else {
+                titleString.append(filterPanel.getBook() + " " + filterPanel.getChapters());
+            }
+        }
+        return titleString.toString();
     }
 
     public ListPanel getListPanel() {

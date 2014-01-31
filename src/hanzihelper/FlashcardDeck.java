@@ -104,6 +104,10 @@ public class FlashcardDeck {
         return (flashcards.get(currentCardOffset).getChars());
     }
 
+    public String getAlternateChars() {
+        return (flashcards.get(currentCardOffset).getAlternateChars());
+    }
+
     public String getPinyinColorized() {
         return (flashcards.get(currentCardOffset).getPinyinColorized());
     }
@@ -117,7 +121,11 @@ public class FlashcardDeck {
     }
 
     public String getCardCount() {
-        return (String.format("%d/%02d", totalCorrect + totalWrong + 1, totalCards));
+        float perCorrect;
+        perCorrect = (totalWrong + totalCorrect == 0) ? 0 : (float) totalCorrect * 100 / (totalWrong + totalCorrect);
+//        return (String.format("%d/%02d", totalCorrect + totalWrong + 1, totalCards));
+        return (String.format("<html>%d/%02d <FONT COLOR=RED>%d</FONT> <FONT COLOR=GREEN>%d</FONT> %2.1f%%</html>",
+                totalCorrect + totalWrong + 1, totalCards, totalWrong, totalCorrect, perCorrect));
     }
 
     /**

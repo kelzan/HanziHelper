@@ -50,8 +50,9 @@ public class ReviewPanel extends javax.swing.JPanel {
         reviewChar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         pinyinLabel = new javax.swing.JLabel();
-        chapLabel = new javax.swing.JLabel();
         defLabel = new javax.swing.JLabel();
+        altLabel = new javax.swing.JLabel();
+        chapLabel = new javax.swing.JLabel();
         buttonPanel = new javax.swing.JPanel();
         countLabel = new javax.swing.JLabel();
         showButton = new javax.swing.JButton();
@@ -69,15 +70,22 @@ public class ReviewPanel extends javax.swing.JPanel {
         pinyinLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pinyinLabel.setText("pinyin");
 
-        chapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        chapLabel.setText("Book Chapter X");
-
-        defLabel.setFont(new java.awt.Font("Arial Unicode MS", 0, 16)); // NOI18N
+        defLabel.setFont(new java.awt.Font("Arial Unicode MS", 0, 18)); // NOI18N
         defLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         defLabel.setText("Definition");
 
+        altLabel.setFont(new java.awt.Font("Arial Unicode MS", 0, 16)); // NOI18N
+        altLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        altLabel.setText("Traditional: 漢");
+        altLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        chapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chapLabel.setText("Book Chapter X");
+        chapLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         buttonPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        countLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countLabel.setText("01/100");
         countLabel.setAlignmentX(0.5F);
 
@@ -107,13 +115,13 @@ public class ReviewPanel extends javax.swing.JPanel {
         buttonPanelLayout.setHorizontalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(wrongButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(correctButton)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(countLabel)
@@ -142,14 +150,18 @@ public class ReviewPanel extends javax.swing.JPanel {
                         .addComponent(jSeparator1)
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 58, Short.MAX_VALUE)
+                        .addGap(0, 80, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(chapLabel)
                             .addComponent(defLabel)
                             .addComponent(pinyinLabel)
                             .addComponent(reviewChar)
                             .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(66, Short.MAX_VALUE))))
+                        .addContainerGap(84, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(altLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,11 +174,13 @@ public class ReviewPanel extends javax.swing.JPanel {
                 .addComponent(pinyinLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(defLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(altLabel)
                 .addGap(18, 18, 18)
                 .addComponent(chapLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,6 +208,7 @@ public class ReviewPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_wrongButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel altLabel;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JLabel chapLabel;
     private javax.swing.JButton correctButton;
@@ -211,6 +226,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         reviewChar.setText(flashcards.getChars());
         pinyinLabel.setText(flashcards.getPinyinColorized());
         defLabel.setText(flashcards.getDefinition());
+        altLabel.setText(flashcards.getAlternateChars());
         chapLabel.setText(flashcards.getBookAndChapter());
         countLabel.setText(flashcards.getCardCount());
     }
@@ -218,20 +234,24 @@ public class ReviewPanel extends javax.swing.JPanel {
     public void setQuestionDisplay() {
         pinyinLabel.setVisible(false);
         defLabel.setVisible(false);
+        altLabel.setVisible(false);
         chapLabel.setVisible(false);
         countLabel.setVisible(true);
         showButton.setEnabled(true);
         wrongButton.setEnabled(false);
         correctButton.setEnabled(false);
+        showButton.requestFocus();
     }
 
     public void setAnswerDisplay() {
         pinyinLabel.setVisible(true);
         defLabel.setVisible(true);
+        altLabel.setVisible(true);
         chapLabel.setVisible(true);
         countLabel.setVisible(true);
         showButton.setEnabled(false);
         wrongButton.setEnabled(true);
         correctButton.setEnabled(true);
+        correctButton.requestFocus();
     }
 }

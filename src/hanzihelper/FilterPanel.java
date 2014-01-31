@@ -89,7 +89,7 @@ public class FilterPanel extends JPanel implements ActionListener {
     }
 
     public String getChapters() {
-        return chapters;
+        return (chapters == null) ? "" : chapters;
     }
 
     public void setChapters(String chapters) {
@@ -97,7 +97,7 @@ public class FilterPanel extends JPanel implements ActionListener {
     }
 
     public String getBook() {
-        return book;
+        return (book == null) ? "" : book;
     }
 
     public void setBook(String book) {

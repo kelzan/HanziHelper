@@ -36,8 +36,8 @@ public class Flashcard {
     }
 
     public String getAlternateChars() {
-        return (isTraditional ? "Simplified: " + record.getChars()
-                : record.hasTrad() ? "Traditional:" + record.getTrad() : "");
+        return (isTraditional ? "Simplified:   " + record.getChars()
+                : record.hasTrad() ? "Traditional:   " + record.getTrad() : "");
     }
 
     public String getPinyinColorized() {
