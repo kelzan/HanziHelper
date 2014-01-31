@@ -120,12 +120,26 @@ public class FlashcardDeck {
         return (flashcards.get(currentCardOffset).getBookAndChapter());
     }
 
+    public boolean isTrad() {
+        return (flashcards.get(currentCardOffset).isTraditional);
+    }
+
     public String getCardCount() {
-        float perCorrect;
-        perCorrect = (totalWrong + totalCorrect == 0) ? 0 : (float) totalCorrect * 100 / (totalWrong + totalCorrect);
+        //       float perCorrect;
+        //       perCorrect = (totalWrong + totalCorrect == 0) ? 0 : (float) totalCorrect * 100 / (totalWrong + totalCorrect);
 //        return (String.format("%d/%02d", totalCorrect + totalWrong + 1, totalCards));
         return (String.format("<html>%d/%02d <FONT COLOR=RED>%d</FONT> <FONT COLOR=GREEN>%d</FONT> %2.1f%%</html>",
-                totalCorrect + totalWrong + 1, totalCards, totalWrong, totalCorrect, perCorrect));
+                totalCorrect + totalWrong + 1, totalCards,
+                totalWrong, totalCorrect, getCorrectPercentage()));
+    }
+
+    public String getFinalResults() {
+        return (String.format("<html>Congratulations, you scored %d correct out of %d (%2.1f%%).<br><center><font SIZE=30>加油!</font></center></html>",
+                totalCorrect, totalCards, getCorrectPercentage()));
+    }
+
+    public float getCorrectPercentage() {
+        return ((totalWrong + totalCorrect == 0) ? 0 : (float) totalCorrect * 100 / (totalWrong + totalCorrect));
     }
 
     /**

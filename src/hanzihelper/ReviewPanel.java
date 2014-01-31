@@ -18,7 +18,9 @@
  */
 package hanzihelper;
 
+import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -27,7 +29,8 @@ import javax.swing.SwingUtilities;
  */
 public class ReviewPanel extends javax.swing.JPanel {
 
-    FlashcardDeck flashcards;
+    private FlashcardDeck flashcards;
+    private Color tradColor = new Color(206, 253, 255);
 
     /**
      * Creates new form ReviewPanel
@@ -37,6 +40,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         initComponents();
         setQuestionDisplay();
         setCardText();
+        countLabel.setText(flashcards.getCardCount());
     }
 
     /**
@@ -84,6 +88,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         chapLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         buttonPanel.setBackground(new java.awt.Color(255, 255, 255));
+        buttonPanel.setOpaque(false);
 
         countLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countLabel.setText("01/100");
@@ -192,17 +197,13 @@ public class ReviewPanel extends javax.swing.JPanel {
     private void correctButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correctButtonActionPerformed
         // TODO add your handling code here:
         flashcards.answerCorrect();
-        if (flashcards.hasNext()) {
-            setQuestionDisplay();
-            setCardText();
-        } else { // We're done here
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-            frame.dispose();
-        }
+        gotoNextCard();
+
     }//GEN-LAST:event_correctButtonActionPerformed
 
     private void wrongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wrongButtonActionPerformed
         flashcards.answerWrong();
+        countLabel.setText(flashcards.getCardCount());
         setQuestionDisplay();
         setCardText();
     }//GEN-LAST:event_wrongButtonActionPerformed
@@ -221,17 +222,36 @@ public class ReviewPanel extends javax.swing.JPanel {
     private javax.swing.JButton wrongButton;
     // End of variables declaration//GEN-END:variables
 
-    public void setCardText() {
+    private void gotoNextCard() {
+        // Set the score here early, just in case we're done and are going to display the
+        // final dialog. That way the score on the card will match.
+        countLabel.setText(flashcards.getCardCount());
+        // Check to see if we have another card
+        if (flashcards.hasNext()) {
+            setQuestionDisplay();
+            setCardText();
+        } else { // We're done here
+            popupReviewCompleteDialog();
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frame.dispose();
+        }
+    }
+
+    private void setCardText() {
         flashcards.prepareSound();
         reviewChar.setText(flashcards.getChars());
         pinyinLabel.setText(flashcards.getPinyinColorized());
         defLabel.setText(flashcards.getDefinition());
         altLabel.setText(flashcards.getAlternateChars());
         chapLabel.setText(flashcards.getBookAndChapter());
-        countLabel.setText(flashcards.getCardCount());
+        if (flashcards.isTrad()) {
+            setBackground(tradColor);
+        } else {
+            setBackground(Color.WHITE);
+        }
     }
 
-    public void setQuestionDisplay() {
+    private void setQuestionDisplay() {
         pinyinLabel.setVisible(false);
         defLabel.setVisible(false);
         altLabel.setVisible(false);
@@ -243,7 +263,7 @@ public class ReviewPanel extends javax.swing.JPanel {
         showButton.requestFocus();
     }
 
-    public void setAnswerDisplay() {
+    private void setAnswerDisplay() {
         pinyinLabel.setVisible(true);
         defLabel.setVisible(true);
         altLabel.setVisible(true);
@@ -253,5 +273,9 @@ public class ReviewPanel extends javax.swing.JPanel {
         wrongButton.setEnabled(true);
         correctButton.setEnabled(true);
         correctButton.requestFocus();
+    }
+
+    private void popupReviewCompleteDialog() {
+        JOptionPane.showMessageDialog(this, flashcards.getFinalResults());
     }
 }
