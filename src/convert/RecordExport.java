@@ -18,12 +18,12 @@
  */
 package convert;
 
+import com.csvreader.CsvWriter;
 import hanzihelper.CharRecord;
 import hanzihelper.Record;
-import hanzihelper.CharApp;
-import hanzihelper.PinyinUtil;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -38,7 +38,7 @@ import java.util.List;
 public class RecordExport {
 
     /**
-     * Tab-delimted records with GB-encoded characters. The output needs to go through the
+     * Tab-delimited records with GB-encoded characters. The output needs to go through the
      * SMCONV.exe util to make a PDB. Sorry... I'm working on an open-source replacement for that
      * thing
      */
@@ -144,6 +144,22 @@ public class RecordExport {
         }
         br.flush();
         br.close();
+    }
+
+    public static void csvExport(CharRecord rec, String filename) throws IOException {
+        Collection c = rec.getRecords(false);
+        CsvWriter csvOutput = new CsvWriter(filename, ',', Charset.forName("UTF-16"));
+        for (Iterator iterator = c.iterator(); iterator.hasNext();) {
+            Record record = (Record) iterator.next();
+            csvOutput.write(record.getPinyin());
+            csvOutput.write(record.getChars());
+            csvOutput.write(record.getTrad());
+            csvOutput.write(record.getEnglish());
+            csvOutput.write(record.getBook());
+            csvOutput.write(record.getChapter());
+            csvOutput.endRecord();
+        }
+        csvOutput.close();
     }
 
     /**

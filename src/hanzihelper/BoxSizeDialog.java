@@ -37,9 +37,9 @@ public class BoxSizeDialog extends JDialog implements ActionListener {
         super(owner);
         this.panel = panel;
         setTitle("Set box size");
-        Container thiss = getContentPane();
-        thiss.setLayout(new FlowLayout());
-        thiss.setBackground(CharApp.COLOR_BG);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new FlowLayout());
+        contentPane.setBackground(CharApp.COLOR_BG);
 
         ok = new JButton("OK");
         cancel = new JButton("Cancel");
@@ -51,13 +51,13 @@ public class BoxSizeDialog extends JDialog implements ActionListener {
         w = new JTextField(panel.getBoxWInches() + "", 4);
         h = new JTextField(panel.getBoxHInches() + "", 4);
         JLabel label = new JLabel("Set box size in inches:");
-        thiss.add(label);
-        thiss.add(wLabel);
-        thiss.add(w);
-        thiss.add(hLabel);
-        thiss.add(h);
-        thiss.add(ok);
-        thiss.add(cancel);
+        contentPane.add(label);
+        contentPane.add(wLabel);
+        contentPane.add(w);
+        contentPane.add(hLabel);
+        contentPane.add(h);
+        contentPane.add(ok);
+        contentPane.add(cancel);
 
         ok.addActionListener(this);
         cancel.addActionListener(this);

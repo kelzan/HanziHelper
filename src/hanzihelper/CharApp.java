@@ -175,10 +175,15 @@ public class CharApp extends JFrame {
             }
         });
 
-        JMenu subMenu = new JMenu("Export");
-        subMenu.setMnemonic(KeyEvent.VK_X);
-        subMenu.setBackground(COLOR_BG);
-        menu.add(subMenu);
+        JMenu expSubMenu = new JMenu("Export");
+        expSubMenu.setMnemonic(KeyEvent.VK_X);
+        expSubMenu.setBackground(COLOR_BG);
+        menu.add(expSubMenu);
+
+        JMenu impSubMenu = new JMenu("Import");
+        impSubMenu.setMnemonic(KeyEvent.VK_I);
+        impSubMenu.setBackground(COLOR_BG);
+        menu.add(impSubMenu);
 
         JMenu vtrainMenu = new JMenu("VTrain");
         vtrainMenu.setMnemonic(KeyEvent.VK_V);
@@ -189,7 +194,7 @@ public class CharApp extends JFrame {
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription("Export to supermemo");
-        subMenu.add(menuItem);
+        expSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -202,7 +207,7 @@ public class CharApp extends JFrame {
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription("Export to Q & A format");
-        subMenu.add(menuItem);
+        expSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -215,7 +220,7 @@ public class CharApp extends JFrame {
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription("Export to PlecoDict");
-        subMenu.add(menuItem);
+        expSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -228,7 +233,7 @@ public class CharApp extends JFrame {
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription("Export to Anki");
-        subMenu.add(menuItem);
+        expSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -241,7 +246,7 @@ public class CharApp extends JFrame {
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription("Text");
-        subMenu.add(menuItem);
+        expSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -249,7 +254,33 @@ public class CharApp extends JFrame {
             }
         });
 
-        subMenu.add(vtrainMenu);
+        menuItem = new JMenuItem("CSV Format",
+                KeyEvent.VK_D);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Export to CSV Format");
+        expSubMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportCSV();
+            }
+        });
+
+        menuItem = new JMenuItem("Tab Delimited",
+                KeyEvent.VK_T);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Export to Tab Delimited Format");
+        expSubMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportText();
+            }
+        });
+
+        expSubMenu.add(vtrainMenu);
 
         menuItem = new JMenuItem("Chinese/English",
                 KeyEvent.VK_2);
@@ -277,6 +308,32 @@ public class CharApp extends JFrame {
             }
         });
 
+        menuItem = new JMenuItem("CDV Format",
+                KeyEvent.VK_D);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Import to CDV Format");
+        impSubMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportText();
+            }
+        });
+
+        menuItem = new JMenuItem("Tab Delimited",
+                KeyEvent.VK_T);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Import to Tab Delimited Format");
+        impSubMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportText();
+            }
+        });
+
         menuItem = new JMenuItem("Convert", KeyEvent.VK_V);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
@@ -287,6 +344,8 @@ public class CharApp extends JFrame {
                 convert();
             }
         });
+
+        menu.addSeparator();
 
         menuItem = new JMenuItem("Review", KeyEvent.VK_R);
         menuItem.setBackground(COLOR_BG);
@@ -299,8 +358,6 @@ public class CharApp extends JFrame {
             }
         });
 
-        menu.addSeparator();
-
         menuItem = new JMenuItem("Print", KeyEvent.VK_P);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
@@ -312,6 +369,8 @@ public class CharApp extends JFrame {
                 popupPrintPanel();
             }
         });
+
+        menu.addSeparator();
 
         menuItem = new JMenuItem("Fonts", KeyEvent.VK_F);
         menuItem.setBackground(COLOR_BG);
@@ -744,6 +803,20 @@ public class CharApp extends JFrame {
             CharProps.getProperties().setProperty("last.path", path);
             try {
                 RecordExport.textExport(record, rFile.getAbsolutePath());
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+
+    public void exportCSV() {
+        record.setSelected(listPanel.getSelectedRows());
+        File rFile = selectFile(".csv", "CSV files", false, true);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordExport.csvExport(record, rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }
