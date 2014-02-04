@@ -276,7 +276,7 @@ public class CharApp extends JFrame {
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exportText();
+                exportTabdel();
             }
         });
 
@@ -822,6 +822,21 @@ public class CharApp extends JFrame {
             }
         }
     }
+    
+    public void exportTabdel() {
+        record.setSelected(listPanel.getSelectedRows());
+        File rFile = selectFile(".txt", "Tab Delimited files", false, true);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordExport.tabdelExport(record, rFile.getAbsolutePath());
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+
 
     public void exportVtrain(boolean one) {
         record.setSelected(listPanel.getSelectedRows());
@@ -831,6 +846,34 @@ public class CharApp extends JFrame {
             CharProps.getProperties().setProperty("last.path", path);
             try {
                 RecordExport.vtrainExport1(record, rFile.getAbsolutePath(), one);
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+    
+    public void importCSV() {
+        record.setSelected(listPanel.getSelectedRows());
+        File rFile = selectFile(".csv", "CSV files", false, false);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordExport.csvImport(record, rFile.getAbsolutePath());
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+    
+    public void importTabdel() {
+        record.setSelected(listPanel.getSelectedRows());
+        File rFile = selectFile(".txt", "Tab Delimited files", false, false);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordExport.tabdelImport(record, rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }
