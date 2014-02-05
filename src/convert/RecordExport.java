@@ -170,38 +170,4 @@ public class RecordExport {
         csvOutput.close();
 
     }
-
-    /**
-     * Exports to VTrain - side one is Chinese and pinyin, side two is English. Delimiters are the
-     * default =, |
-     *
-     * @param rec
-     * @param filename
-     * @throws IOException
-     */
-    public static void vtrainExport1(CharRecord rec, String filename, boolean one) throws IOException {
-        Collection c = rec.getRecords(false);
-        FileOutputStream fis = new FileOutputStream(filename);
-        fis.write(Converter.BOM);
-        OutputStreamWriter osw = new OutputStreamWriter(fis, "UTF-8");
-        PrintWriter bw = new PrintWriter(new BufferedWriter(osw));
-        boolean whitespace = false;
-        for (Iterator iterator = c.iterator(); iterator.hasNext();) {
-            Record record = (Record) iterator.next();
-            if (!whitespace) { // Vtrain chokes on unicode if the first char is chinese
-                bw.print(" ");
-                whitespace = true;
-            }
-            if (one) {
-                bw.print(record.getChars() + " \r\n(" + record.getPinyin() + ")=");
-                bw.println(record.getEnglish() + "|");
-            } else {
-                bw.print(record.getChars() + "=");
-                bw.println(record.getPinyin() + " \r\n " + record.getEnglish() + "|");
-
-            }
-        }
-        bw.flush();
-        bw.close();
-    }
 }

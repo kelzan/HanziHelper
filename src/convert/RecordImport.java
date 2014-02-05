@@ -20,11 +20,11 @@ package convert;
 
 import com.csvreader.CsvReader;
 import hanzihelper.CharApp;
-import hanzihelper.CharRecord;
 import hanzihelper.Record;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import javax.swing.JOptionPane;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -49,7 +49,49 @@ public class RecordImport {
                 CharApp.getInstance().getRecord().addRecord(rec);
             }
         }
+        CharApp.getInstance().getRecord().flushToDisk();
         CharApp.getInstance().refresh();
         CharApp.getInstance().getFilterPanel().refresh();
+    }
+    
+    public static void wenlinImport(String filename) throws IOException {
+        String pinyin;
+        String simp;
+        String trad;
+        String definition;
+        String book = "Study";
+        String chapter = "0";
+        
+        Pattern chapterPattern = Pattern.compile("Character Study ([0-9]+)");
+        Pattern tradPattern = Pattern.compile("(.*)\\((.*)\\)");
+        
+        CsvReader importRecs = new CsvReader(filename, '\t', Charset.forName("UTF-16"));
+
+        while (importRecs.readRecord()) {
+            if (importRecs.getColumnCount() == 1) {
+                Matcher matcher = chapterPattern.matcher(importRecs.get(0));
+                if (matcher.matches()) {
+                    chapter = matcher.group(1);
+//                    System.out.println("Found chapter: " + chapter);
+                }
+            }
+            if (importRecs.getColumnCount() >= 3) {
+                pinyin = importRecs.get(1);
+                definition = importRecs.get(2);
+                Matcher matcher = tradPattern.matcher(importRecs.get(0));
+                if (matcher.matches()) {
+                    simp = matcher.group(1);
+                    trad = matcher.group(2);
+                } else {
+                    simp = importRecs.get(0);
+                    trad = "";
+                }                
+                Record rec = new Record(-1, pinyin, simp, trad, definition, book, chapter);
+                CharApp.getInstance().getRecord().addRecord(rec);
+            }
+        }
+        CharApp.getInstance().getRecord().flushToDisk();
+        CharApp.getInstance().refresh();
+        CharApp.getInstance().getFilterPanel().refresh();       
     }
 }

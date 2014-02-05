@@ -22,9 +22,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * The "database" of characters. This class is just a wrapper around a UTF-8 text file. The text
- * file is tab-delimited with the following columns: pinyin / UTF-8 chinese / UTF-8 traditional /
- * english / book / chapter / extended info
+ * The "database" of characters. This class is just a wrapper around a UTF-8
+ * text file. The text file is tab-delimited with the following columns: pinyin
+ * / UTF-8 chinese / UTF-8 traditional / english / book / chapter / extended
+ * info
  */
 public class CharRecord {
 
@@ -102,12 +103,6 @@ public class CharRecord {
             rec.setOrder(records.size() + 1);
         }
         records.add(rec);
-        try {
-            flushToDisk();
-        } catch (IOException e) {
-            e.printStackTrace();
-            CharApp.getInstance().showErrorMessage("Problem adding record: " + e.getMessage());
-        }
     }
 
     /**
@@ -115,14 +110,19 @@ public class CharRecord {
      *
      * @throws IOException if a is encountered.
      */
-    public void flushToDisk() throws IOException {
-        BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(recordFile), "UTF-8"));
-        for (Iterator iterator = records.iterator(); iterator.hasNext();) {
-            Record record = (Record) iterator.next();
-            br.write(record.toString() + "\r\n");
+    public void flushToDisk() {
+        try {
+            BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(recordFile), "UTF-8"));
+            for (Iterator iterator = records.iterator(); iterator.hasNext();) {
+                Record record = (Record) iterator.next();
+                br.write(record.toString() + "\r\n");
+            }
+            br.flush();
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            CharApp.getInstance().showErrorMessage("Problem adding record: " + e.getMessage());
         }
-        br.flush();
-        br.close();
     }
 
     /**
@@ -151,7 +151,7 @@ public class CharRecord {
     }
 
     /**
-     * @param record   - the index of the record needed
+     * @param record - the index of the record needed
      * @param filtered - whether to ignore the current filter
      * @return - the Record with that index in the list
      */
@@ -267,7 +267,8 @@ public class CharRecord {
     }
 
     /**
-     * For iterating through the list, skipping over non-selected records and filtered-out records.
+     * For iterating through the list, skipping over non-selected records and
+     * filtered-out records.
      */
     static class FilteredList extends AbstractCollection implements Iterator {
 

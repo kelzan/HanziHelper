@@ -142,6 +142,7 @@ public class AddNewPanel extends JDialog implements ActionListener {
             Record rec = new Record(-1, pinyin.getText(), chars.getText(), trad.getText(), english.getText(), book.getText(), chapter.getText());
             try {
                 CharApp.getInstance().getRecord().addRecord(rec);
+                CharApp.getInstance().getRecord().flushToDisk();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "A problem occured", JOptionPane.ERROR_MESSAGE);

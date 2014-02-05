@@ -185,10 +185,6 @@ public class CharApp extends JFrame {
         impSubMenu.setBackground(COLOR_BG);
         menu.add(impSubMenu);
 
-        JMenu vtrainMenu = new JMenu("VTrain");
-        vtrainMenu.setMnemonic(KeyEvent.VK_V);
-        vtrainMenu.setBackground(COLOR_BG);
-
         menuItem = new JMenuItem("Supermemo",
                 KeyEvent.VK_S);
         menuItem.setBackground(COLOR_BG);
@@ -280,39 +276,11 @@ public class CharApp extends JFrame {
             }
         });
 
-        expSubMenu.add(vtrainMenu);
-
-        menuItem = new JMenuItem("Chinese/English",
-                KeyEvent.VK_2);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Chinese and pinyin to english");
-        vtrainMenu.add(menuItem);
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                exportVtrain(true);
-            }
-        });
-
-        menuItem = new JMenuItem("Chinese/Pinyin",
-                KeyEvent.VK_2);
-        menuItem.setBackground(COLOR_BG);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Chinese to pinyin and english");
-        vtrainMenu.add(menuItem);
-
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                exportVtrain(false);
-            }
-        });
-
         menuItem = new JMenuItem("CSV Format",
                 KeyEvent.VK_D);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Import to CSV Format");
+        menuItem.getAccessibleContext().setAccessibleDescription("Import from CSV Format");
         impSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
@@ -325,12 +293,25 @@ public class CharApp extends JFrame {
                 KeyEvent.VK_T);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Import to Tab Delimited Format");
+        menuItem.getAccessibleContext().setAccessibleDescription("Import from Tab Delimited Format");
         impSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 importTabdel();
+            }
+        });
+
+         menuItem = new JMenuItem("Wenlin",
+                KeyEvent.VK_W);
+        menuItem.setBackground(COLOR_BG);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription("Import from Wenlin Format");
+        impSubMenu.add(menuItem);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                importWenlin();
             }
         });
 
@@ -837,20 +818,6 @@ public class CharApp extends JFrame {
         }
     }
 
-    public void exportVtrain(boolean one) {
-        record.setSelected(listPanel.getSelectedRows());
-        File rFile = selectFile(".txt", "text files", false, true);
-        if (rFile != null) {
-            String path = rFile.getParentFile().getAbsolutePath();
-            CharProps.getProperties().setProperty("last.path", path);
-            try {
-                RecordExport.vtrainExport1(record, rFile.getAbsolutePath(), one);
-            } catch (Exception e) {
-                showErrorMessage("Problem with export: " + e.getMessage());
-            }
-        }
-    }
-
     public void importCSV() {
         File rFile = selectFile(".csv", "CSV files", false, false);
         if (rFile != null) {
@@ -871,6 +838,19 @@ public class CharApp extends JFrame {
             CharProps.getProperties().setProperty("last.path", path);
             try {
                 RecordImport.tabdelImport(rFile.getAbsolutePath());
+            } catch (Exception e) {
+                showErrorMessage("Problem with export: " + e.getMessage());
+            }
+        }
+    }
+    
+    public void importWenlin() {
+        File rFile = selectFile("", "Wenlin files", false, false);
+        if (rFile != null) {
+            String path = rFile.getParentFile().getAbsolutePath();
+            CharProps.getProperties().setProperty("last.path", path);
+            try {
+                RecordImport.wenlinImport(rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }
