@@ -20,6 +20,7 @@ package convert;
 
 import com.csvreader.CsvReader;
 import hanzihelper.CharApp;
+import hanzihelper.PinyinUtil;
 import hanzihelper.Record;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -49,11 +50,13 @@ public class RecordImport {
                 CharApp.getInstance().getRecord().addRecord(rec);
             }
         }
+        importRecs.close();
+
         CharApp.getInstance().getRecord().flushToDisk();
         CharApp.getInstance().refresh();
         CharApp.getInstance().getFilterPanel().refresh();
     }
-    
+
     public static void wenlinImport(String filename) throws IOException {
         String pinyin;
         String simp;
@@ -61,10 +64,10 @@ public class RecordImport {
         String definition;
         String book = "Study";
         String chapter = "0";
-        
+
         Pattern chapterPattern = Pattern.compile("Character Study ([0-9]+)");
         Pattern tradPattern = Pattern.compile("(.*)\\((.*)\\)");
-        
+
         CsvReader importRecs = new CsvReader(filename, '\t', Charset.forName("UTF-16"));
 
         while (importRecs.readRecord()) {
@@ -85,13 +88,19 @@ public class RecordImport {
                 } else {
                     simp = importRecs.get(0);
                     trad = "";
-                }                
+                }
+                System.out.println("Pinyin before: " + pinyin);
+                pinyin = PinyinUtil.toAscii(pinyin);
+                System.out.println("Pinyin after: " + pinyin + "\n");
+
                 Record rec = new Record(-1, pinyin, simp, trad, definition, book, chapter);
                 CharApp.getInstance().getRecord().addRecord(rec);
             }
         }
+        importRecs.close();
+
         CharApp.getInstance().getRecord().flushToDisk();
         CharApp.getInstance().refresh();
-        CharApp.getInstance().getFilterPanel().refresh();       
+        CharApp.getInstance().getFilterPanel().refresh();
     }
 }

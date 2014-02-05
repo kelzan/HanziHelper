@@ -64,6 +64,8 @@ public class PinyinUtilTest extends TestCase {
         assertEquals("xxx", PinyinUtil.toUnicode("xxx"));
         assertEquals("jiǔ", PinyinUtil.toUnicode("jiǔ"));
 
+        assertEquals("ni3 hao3 ma", PinyinUtil.toAscii("nǐ hǎo ma"));
+
     }
 
     /**

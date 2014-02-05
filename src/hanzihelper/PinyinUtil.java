@@ -60,6 +60,36 @@ public class PinyinUtil {
         return result.toString();
     }
 
+    /**
+     * Takes a string and removes all tone marks, annotating with plan ASCII style numerical tones.
+     * This is still rather limited in its ability to parse connected pinyin syllables. Currently
+     * the assumption is that each syllable is separated by white space.
+     *
+     * @param pinyin Unicode pinyin ("nǐ hǎo ma")
+     * @return ASCII pinyin ("ni3 hao3 ma5")
+     */
+    public static String toAscii(String pinyin) {
+        // First adds the numerical value based on a tone mark
+        pinyin = pinyin.replaceAll("(\\S*[āōēīūǖĀŌĒǕ]\\S*)", "$11");
+        pinyin = pinyin.replaceAll("(\\S*[áóéíúǘÁÓÉǗ]\\S*)", "$12");
+        pinyin = pinyin.replaceAll("(\\S*[ǎǒěǐǔǚǍǑĚǙ]\\S*)", "$13");
+        pinyin = pinyin.replaceAll("(\\S*[àòèìùǜÀÒÈǛ]\\S*)", "$14");
+
+        // Now gets rid of the tone marks
+        pinyin = pinyin.replaceAll("[āáǎà]", "a");
+        pinyin = pinyin.replaceAll("[ōóǒò]", "o");
+        pinyin = pinyin.replaceAll("[ēéěè]", "e");
+        pinyin = pinyin.replaceAll("[īíǐì]", "i");
+        pinyin = pinyin.replaceAll("[ūúǔù]", "u");
+        pinyin = pinyin.replaceAll("[ǖǘǚǜü]", "v");
+        pinyin = pinyin.replaceAll("[ĀÁǍÀ]", "A");
+        pinyin = pinyin.replaceAll("[ŌÓǑÒ]", "O");
+        pinyin = pinyin.replaceAll("[ĒÉĚÈ]", "E");
+        pinyin = pinyin.replaceAll("[ǕǗǙǛÜ]", "V");
+
+        return pinyin;
+    }
+
     private static String syllableToUnicode(String pinyin) {
         char last = pinyin.charAt(pinyin.length() - 1);
         if (!Character.isDigit(last)) {
@@ -113,12 +143,9 @@ public class PinyinUtil {
         // - the end of a vowel group
         // - n, ng, r
         // - the end of the string
-
         // All syllables contain a vowel group
-
         // I'm doing the stack stuff in the hope of making this more robust
         // in future, such as being able to divide the string "canguan" into "can, guan"
-
         // JDK 1.5
 //    List<String> syllables = new ArrayList<String>();
 //    Stack<Character> last = new Stack<Character>();
