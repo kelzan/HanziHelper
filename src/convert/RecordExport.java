@@ -30,18 +30,17 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * This class separates the logic for exporting to a couple of other formats.
- * SuperMemo is for the Palm implementation of the SuperMemo flashcard software
- * (sadly, not open source) by MapleTop software. Dragon is a fantastic palm
- * Hanzi testing application that *is* open source and can be found at
- * http://dragon-char.sf.net.
+ * This class separates the logic for exporting to a couple of other formats. SuperMemo is for the
+ * Palm implementation of the SuperMemo flashcard software (sadly, not open source) by MapleTop
+ * software. Dragon is a fantastic palm Hanzi testing application that *is* open source and can be
+ * found at http://dragon-char.sf.net.
  */
 public class RecordExport {
 
     /**
-     * Tab-delimited records with GB-encoded characters. The output needs to go
-     * through the SMCONV.exe util to make a PDB. Sorry... I'm working on an
-     * open-source replacement for that thing
+     * Tab-delimited records with GB-encoded characters. The output needs to go through the
+     * SMCONV.exe util to make a PDB. Sorry... I'm working on an open-source replacement for that
+     * thing
      */
     public static void superMemoExport(CharRecord rec, String file) throws IOException {
         Collection c = rec.getRecords(false);
@@ -171,36 +170,10 @@ public class RecordExport {
         csvOutput.close();
 
     }
-    
-    public static void csvImport(CharRecord rec, String filename) throws IOException {
-        delimitedImport(rec, filename, ',');
-    }
-
-    public static void tabdelImport(CharRecord rec, String filename) throws IOException {
-        delimitedImport(rec, filename, '\t');
-    }
-
-  // TEMP still need to implement this.
-    private static void delimitedImport(CharRecord rec, String filename, char delimiter) throws IOException {
-        Collection c = rec.getRecords(false);
-        CsvWriter csvOutput = new CsvWriter(filename, delimiter, Charset.forName("UTF-8"));
-        for (Iterator iterator = c.iterator(); iterator.hasNext();) {
-            Record record = (Record) iterator.next();
-            csvOutput.write(record.getPinyin());
-            csvOutput.write(record.getChars());
-            csvOutput.write(record.getTrad());
-            csvOutput.write(record.getEnglish());
-            csvOutput.write(record.getBook());
-            csvOutput.write(record.getChapter());
-            csvOutput.endRecord();
-        }
-        csvOutput.close();
-
-    }
 
     /**
-     * Exports to VTrain - side one is Chinese and pinyin, side two is English.
-     * Delimiters are the default =, |
+     * Exports to VTrain - side one is Chinese and pinyin, side two is English. Delimiters are the
+     * default =, |
      *
      * @param rec
      * @param filename

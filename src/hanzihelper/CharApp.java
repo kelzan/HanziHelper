@@ -308,16 +308,16 @@ public class CharApp extends JFrame {
             }
         });
 
-        menuItem = new JMenuItem("CDV Format",
+        menuItem = new JMenuItem("CSV Format",
                 KeyEvent.VK_D);
         menuItem.setBackground(COLOR_BG);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK | ActionEvent.CTRL_MASK));
-        menuItem.getAccessibleContext().setAccessibleDescription("Import to CDV Format");
+        menuItem.getAccessibleContext().setAccessibleDescription("Import to CSV Format");
         impSubMenu.add(menuItem);
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exportText();
+                importCSV();
             }
         });
 
@@ -330,7 +330,7 @@ public class CharApp extends JFrame {
 
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exportText();
+                importTabdel();
             }
         });
 
@@ -822,7 +822,7 @@ public class CharApp extends JFrame {
             }
         }
     }
-    
+
     public void exportTabdel() {
         record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".txt", "Tab Delimited files", false, true);
@@ -837,7 +837,6 @@ public class CharApp extends JFrame {
         }
     }
 
-
     public void exportVtrain(boolean one) {
         record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".txt", "text files", false, true);
@@ -851,29 +850,27 @@ public class CharApp extends JFrame {
             }
         }
     }
-    
+
     public void importCSV() {
-        record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".csv", "CSV files", false, false);
         if (rFile != null) {
             String path = rFile.getParentFile().getAbsolutePath();
             CharProps.getProperties().setProperty("last.path", path);
             try {
-                RecordExport.csvImport(record, rFile.getAbsolutePath());
+                RecordImport.csvImport(rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }
         }
     }
-    
+
     public void importTabdel() {
-        record.setSelected(listPanel.getSelectedRows());
         File rFile = selectFile(".txt", "Tab Delimited files", false, false);
         if (rFile != null) {
             String path = rFile.getParentFile().getAbsolutePath();
             CharProps.getProperties().setProperty("last.path", path);
             try {
-                RecordExport.tabdelImport(record, rFile.getAbsolutePath());
+                RecordImport.tabdelImport(rFile.getAbsolutePath());
             } catch (Exception e) {
                 showErrorMessage("Problem with export: " + e.getMessage());
             }

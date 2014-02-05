@@ -60,6 +60,31 @@ public class Record implements Comparable {
         this.extra1 = extra1;
     }
 
+    public Record(int order, String[] fields) {
+        this.order = order;
+        if (fields.length > 0) {
+            pinyin = fields[0];
+            if (fields.length > 1) {
+                chars = fields[1];
+                if (fields.length > 2) {
+                    trad = fields[2];
+                    if (fields.length > 3) {
+                        english = fields[3];
+                        if (fields.length > 4) {
+                            book = fields[4];
+                            if (fields.length > 5) {
+                                chapter = fields[5];
+                                if (fields.length > 6) {
+                                    extra1 = fields[6];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public int getOrder() {
         return order;
     }

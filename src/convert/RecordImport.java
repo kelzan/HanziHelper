@@ -18,10 +18,38 @@
  */
 package convert;
 
+import com.csvreader.CsvReader;
+import hanzihelper.CharApp;
+import hanzihelper.CharRecord;
+import hanzihelper.Record;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author klarson
  */
 public class RecordImport {
 
+    public static void csvImport(String filename) throws IOException {
+        delimitedImport(filename, ',');
+    }
+
+    public static void tabdelImport(String filename) throws IOException {
+        delimitedImport(filename, '\t');
+    }
+
+    private static void delimitedImport(String filename, char delimiter) throws IOException {
+        CsvReader importRecs = new CsvReader(filename, delimiter, Charset.forName("UTF-8"));
+
+        while (importRecs.readRecord()) {
+            if (importRecs.getColumnCount() >= 6) {
+                Record rec = new Record(-1, importRecs.getValues());
+                CharApp.getInstance().getRecord().addRecord(rec);
+            }
+        }
+        CharApp.getInstance().refresh();
+        CharApp.getInstance().getFilterPanel().refresh();
+    }
 }
